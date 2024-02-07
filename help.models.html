@@ -37,31 +37,6 @@
 </section>
 <section id="module-help.models.labelling">
 <span id="help-models-labelling-module"></span><h2>help.models.labelling module<a class="headerlink" href="#module-help.models.labelling" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.HELP">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">HELP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">three_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelnames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gene'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#HELP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.HELP" title="Link to this definition">¶</a></dt>
-<dd><p>Main function for HELP algorithm.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input DataFrame.</p></li>
-<li><p><strong>columns</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – List of column names for partitioning (default: []).</p></li>
-<li><p><strong>three_class</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for three-class labeling (default: False).</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Verbosity level for printing information (default: False).</p></li>
-<li><p><strong>labelnames</strong> (<em>Dict</em><em>[</em><em>int</em><em>, </em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Dictionary mapping class labels to names (default: {}).</p></li>
-<li><p><strong>rowname</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the DataFrame index (default: ‘gene’).</p></li>
-<li><p><strong>colname</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the label column (default: ‘label’).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Output DataFrame with labels.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="help.models.labelling.Help">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">Help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/models/labelling.html#Help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.Help" title="Link to this definition">¶</a></dt>
@@ -257,84 +232,41 @@
 
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.QuantizeByColumns">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">QuantizeByColumns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#QuantizeByColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.QuantizeByColumns" title="Link to this definition">¶</a></dt>
-<dd><p>Quantizes a 2D NumPy array column-wise.</p>
-<p>Parameters:
-- T (np.ndarray): The input 2D array.
-- n (int): Number of quantization levels.
-- verbose (int): Verbosity level for printing information (default: 0).</p>
-<p>Returns:
-- Tuple[np.ndarray, np.ndarray]: Quantized array and threshold vector.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.compute_sigma_b_squared">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">compute_sigma_b_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#compute_sigma_b_squared"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.compute_sigma_b_squared" title="Link to this definition">¶</a></dt>
-<dd><p>Computes sigma_b_squared for Otsu’s thresholding.</p>
-<p>Parameters:
-- N (int): Number of classes (1 or 2).
-- num_bins (int): Number of bins for histogram.
-- omega (np.ndarray): Cumulative distribution function.
-- mu (np.ndarray): Cumulative mean values.
-- mu_t (float): Total mean.</p>
-<p>Returns:
-- np.ndarray: Sigma_b_squared values.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.getpdf">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">getpdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#getpdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.getpdf" title="Link to this definition">¶</a></dt>
-<dd><p>Computes the probability density function (PDF) of an array.</p>
-<p>Parameters:
-- A (np.ndarray): Input array.
-- num_bins (int): Number of bins for histogram.</p>
-<p>Returns:
-- Tuple[np.ndarray, float, float]: PDF, minimum value, and maximum value.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.help_core">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">help_core</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">three_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelnames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{0:</span> <span class="pre">'E',</span> <span class="pre">1:</span> <span class="pre">'NE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gene'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#help_core"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.help_core" title="Link to this definition">¶</a></dt>
-<dd><p>Core function for HELP algorithm.</p>
-<p>Parameters:
-- df (pd.DataFrame): Input DataFrame.
-- columns (List[str]): List of column names.
-- three_class (bool): Flag for three-class labeling (default: False).
-- verbose (bool): Verbosity level for printing information (default: False).
-- labelnames (Dict[int, str]): Dictionary mapping class labels to names (default: {0: ‘E’, 1: ‘NE’}).
-- rowname (str): Name of the DataFrame index (default: ‘gene’).
-- colname (str): Name of the label column (default: ‘label’).</p>
-<p>Returns:
-- Tuple[pd.DataFrame, np.ndarray]: Output DataFrame and quantized array.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.modemax">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">modemax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a:</span> <span class="pre">~numpy.ndarray,</span> <span class="pre">reducefoo:</span> <span class="pre">~typing.Callable[[~typing.List[int]],</span> <span class="pre">int]</span> <span class="pre">=</span> <span class="pre">&lt;built-in</span> <span class="pre">function</span> <span class="pre">max&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#modemax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.modemax" title="Link to this definition">¶</a></dt>
-<dd><p>Computes the mode of an array along each row. IN case of ex-aequo modes, retunr the value computed by reducefoo (default max)</p>
-<p>Parameters:
-- a (np.ndarray): Input 2D array.
-- reducefoo (Callable[[List[int]], int]): Reduction function (default: max).</p>
-<p>Returns:
-- np.ndarray: Mode values.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="help.models.labelling.otsuthresholding">
-<span class="sig-prename descclassname"><span class="pre">help.models.labelling.</span></span><span class="sig-name descname"><span class="pre">otsuthresholding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/help/models/labelling.html#otsuthresholding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.labelling.otsuthresholding" title="Link to this definition">¶</a></dt>
-<dd><p>Computes Otsu’s threshold for image segmentation.</p>
-<p>Parameters:
-- A (np.ndarray): Input array.
-- N (int): Number of classes (1 or 2).</p>
-<p>Returns:
-- Tuple[float, float]: Threshold value and related metric.</p>
-</dd></dl>
-
 </section>
-<section id="help-models-prediction-module">
-<h2>help.models.prediction module<a class="headerlink" href="#help-models-prediction-module" title="Link to this heading">¶</a></h2>
+<section id="module-help.models.prediction">
+<span id="help-models-prediction-module"></span><h2>help.models.prediction module<a class="headerlink" href="#module-help.models.prediction" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="help.models.prediction.predict_cv">
+<span class="sig-prename descclassname"><span class="pre">help.models.prediction.</span></span><span class="sig-name descname"><span class="pre">predict_cv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveflag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'predictions.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/models/prediction.html#predict_cv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.prediction.predict_cv" title="Link to this definition">¶</a></dt>
+<dd><p>Perform cross-validated predictions using a LightGBM classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>DataFrame</em>) – Features DataFrame.</p></li>
+<li><p><strong>Y</strong> (<em>DataFrame</em>) – Target variable DataFrame.</p></li>
+<li><p><strong>n_splits</strong> (<em>int</em>) – Number of folds for cross-validation.</p></li>
+<li><p><strong>balanced</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use class weights to balance the classes.</p></li>
+<li><p><strong>saveflag</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save the predictions to a CSV file.</p></li>
+<li><p><strong>outfile</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – File name for saving predictions.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print verbose information.</p></li>
+<li><p><strong>display</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to display a confusion matrix plot.</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Random seed for reproducibility.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Summary statistics of the cross-validated predictions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.models.prediction.set_seed">
+<span class="sig-prename descclassname"><span class="pre">help.models.prediction.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/models/prediction.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.prediction.set_seed" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="module-help.models">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-help.models" title="Link to this heading">¶</a></h2>

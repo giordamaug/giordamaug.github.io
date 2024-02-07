@@ -74,6 +74,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">..models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
 <span class="kn">from</span> <span class="nn">..visualization.plot</span> <span class="kn">import</span> <span class="n">svenn_intesect</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="c1"># select cell lines from depmap CRISPR file</span>
 <div class="viewcode-block" id="select_cell_lines">
@@ -90,6 +91,10 @@
 <span class="sd">        DataFrame containing mapping information.</span>
 <span class="sd">    tissue_list : List[str]</span>
 <span class="sd">        List of tissues for which cell lines need to be selected.</span>
+<span class="sd">    line_group : str, optional</span>
+<span class="sd">        The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
+<span class="sd">    line_col : str, optional</span>
+<span class="sd">        The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
 <span class="sd">    nested : bool, optional</span>
 <span class="sd">        Whether to return cell lines as nested lists (lists for each tissue).</span>
 <span class="sd">    verbose : int, optional</span>
@@ -136,98 +141,6 @@
     <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span></div>
 
-
-<div class="viewcode-block" id="feature_assemble">
-<a class="viewcode-back" href="../../../help.utility.html#help.utility.selection.feature_assemble">[docs]</a>
-<span class="k">def</span> <span class="nf">feature_assemble</span><span class="p">(</span><span class="n">label_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;bio+gtex.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;fixna&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">}],</span> 
-                     <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">subsample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Assemble features and labels for machine learning tasks.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    label_file : str</span>
-<span class="sd">        Path to the label file.</span>
-<span class="sd">    features : List[Dict[str, Union[str, bool]]]</span>
-<span class="sd">        List of dictionaries specifying feature files and their processing options.</span>
-<span class="sd">    colname : str</span>
-<span class="sd">        Name of the column in the label file to be used as the target variable.</span>
-<span class="sd">    subsample : bool, optional</span>
-<span class="sd">        Whether to subsample the data.</span>
-<span class="sd">    seed : int or None, optional</span>
-<span class="sd">        Random seed for reproducibility.</span>
-<span class="sd">    fold : int or None, optional</span>
-<span class="sd">        Number of folds for subsampling.</span>
-<span class="sd">    saveflag : bool, optional</span>
-<span class="sd">        Whether to save the assembled data to files.</span>
-<span class="sd">    verbose : bool, optional</span>
-<span class="sd">        Whether to print verbose messages during processing.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Tuple[pd.DataFrame, pd.DataFrame]</span>
-<span class="sd">        Tuple containing the assembled features (X) and labels (Y) DataFrames.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># Load labels from the specified file</span>
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading </span><span class="si">{</span><span class="n">label_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    
-    <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="c1"># Subsample the data if required</span>
-    <span class="k">if</span> <span class="n">subsample</span><span class="p">:</span>
-        <span class="n">idxNE</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;NE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;NE&#39;</span><span class="p">]),</span> <span class="n">fold</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">]),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
-        <span class="n">idxE</span> <span class="o">=</span> <span class="n">lab_df</span><span class="p">[</span><span class="n">lab_df</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
-        <span class="n">lab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxNE</span><span class="p">],</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxE</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="c1"># Common indices among labels and features</span>
-    <span class="n">idx_common</span> <span class="o">=</span> <span class="n">lab_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">lab_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-
-    <span class="c1"># Process each feature</span>
-    <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
-        <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">feattype</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
-        <span class="c1"># Handle missing values if required</span>
-        <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;fixna&#39;</span><span class="p">]:</span>
-            <span class="n">cntnan</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] found </span><span class="si">{</span><span class="n">cntnan</span><span class="si">}</span><span class="s2"> Nan...&quot;</span><span class="p">)</span>
-            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-
-        <span class="c1"># Normalize features</span>
-        <span class="k">if</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span>
-            <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] Normalization with </span><span class="si">{</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> ...&quot;</span><span class="p">)</span>
-            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">feat_df</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span>
-            <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] Normalization with </span><span class="si">{</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;normalize&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-            <span class="n">feat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">feat_df</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feat_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">feattype</span><span class="si">}</span><span class="s2">] No normalization...&quot;</span><span class="p">)</span>
-
-        <span class="c1"># Update common indices and concatenate features</span>
-        <span class="n">idx_common</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">idx_common</span><span class="p">,</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">],</span> <span class="n">feat_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">idx_common</span><span class="p">)</span><span class="si">}</span><span class="s1"> labeled genes over a total of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lab_df</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> data input&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Save the assembled data if required</span>
-    <span class="k">if</span> <span class="n">saveflag</span><span class="p">:</span>
-        <span class="n">x</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s2">&quot;X.csv&quot;</span><span class="p">))</span>
-        <span class="n">lab_df</span><span class="p">[[</span><span class="n">colname</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s2">&quot;Y.csv&quot;</span><span class="p">))</span>
-
-    <span class="c1"># Return the assembled features (X) and labels (Y)</span>
-    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">lab_df</span><span class="p">[[</span><span class="n">colname</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">]</span></div>
 
 
 <span class="c1"># Compute intersection of essential genes by tissues</span>

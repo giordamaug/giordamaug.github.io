@@ -10,7 +10,7 @@ Welcome to HELP's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   installation
+   install
    tutorial
 
 Indices and tables

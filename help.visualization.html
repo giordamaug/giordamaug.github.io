@@ -105,28 +105,28 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sets</strong> (<em>List</em><em>[</em><em>set</em><em>]</em>) – List of sets to be visualized.</p></li>
 <li><p><strong>labels</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of labels corresponding to each set.</p></li>
-<li><p><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Figure size in inches, as a tuple (width, height) (default is (10, 20)).</p></li>
-<li><p><strong>fontsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Font size for labels (default is 10).</p></li>
-<li><p><strong>saveflag</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save the generated diagram as an image (default is False).</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) – Figure size in inches, as a tuple (width, height) (default is (10, 20)).</p></li>
+<li><p><strong>fontsize</strong> (<em>int</em>) – Font size for labels (default is 10).</p></li>
+<li><p><strong>saveflag</strong> (<em>bool</em>) – Whether to save the generated diagram as an image (default is False).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>None</em></p></li>
-<li><p><em>The function generates a Supervenn diagram using the ‘supervenn’ library and Matplotlib.</em></p></li>
-<li><p><em>The diagram visualizes the intersection of multiple sets with labeled areas.</em></p></li>
-</ul>
-</p>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">#</span> <span class="pre">Usage</span> <span class="pre">example:</span>
-<span class="pre">set1</span> <span class="pre">=</span> <span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5}</span>
-<span class="pre">set2</span> <span class="pre">=</span> <span class="pre">{3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7}</span>
-<span class="pre">set3</span> <span class="pre">=</span> <span class="pre">{5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9}</span>
-<span class="pre">svenn_intersect([set1,</span> <span class="pre">set2,</span> <span class="pre">set3],</span> <span class="pre">[&quot;Set</span> <span class="pre">A&quot;,</span> <span class="pre">&quot;Set</span> <span class="pre">B&quot;,</span> <span class="pre">&quot;Set</span> <span class="pre">C&quot;],</span> <span class="pre">saveflag=True)</span>
-<span class="pre">`</span></code></p>
+<p>The function generates a Supervenn diagram using the ‘supervenn’ library and Matplotlib.
+The diagram visualizes the intersection of multiple sets with labeled areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usage example:</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+<span class="n">set3</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">svenn_intesect</span><span class="p">([</span><span class="n">set1</span><span class="p">,</span> <span class="n">set2</span><span class="p">,</span> <span class="n">set3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Set A&quot;</span><span class="p">,</span> <span class="s2">&quot;Set B&quot;</span><span class="p">,</span> <span class="s2">&quot;Set C&quot;</span><span class="p">],</span> <span class="n">saveflag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -145,17 +145,14 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The main DataFrame containing the data.</p></li>
 <li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – A DataFrame used for mapping data.</p></li>
-<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
-<li><p><strong>minlines</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
-<li><p><strong>line_group</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
-<li><p><strong>line_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+<li><p><strong>rows</strong> (<em>int</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
+<li><p><strong>minlines</strong> (<em>int</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
+<li><p><strong>line_group</strong> (<em>str</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Widget containing the labeled cell lines.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ipywidgets.ValueWidget</p>
+<dd class="field-even"><p>ipywidgets.ValueWidget Widget containing the labeled cell lines.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -167,16 +164,13 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>label_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the label file (default is “.”).</p></li>
-<li><p><strong>feature_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the feature files (default is “.”).</p></li>
-<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows to display in the widget (default is 5).</p></li>
+<li><p><strong>label_path</strong> (<em>str</em>) – Path to the label file (default is “.”).</p></li>
+<li><p><strong>feature_path</strong> (<em>str</em>) – Path to the feature files (default is “.”).</p></li>
+<li><p><strong>rows</strong> (<em>int</em>) – Number of rows to display in the widget (default is 5).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Widget containing the assembled features and labels DataFrames.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ipywidgets.ValueWidget</p>
+<dd class="field-even"><p>ipywidgets.ValueWidget Widget containing the assembled features and labels DataFrames.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -190,17 +184,14 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The main DataFrame containing the data.</p></li>
 <li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – A DataFrame used for mapping data.</p></li>
-<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
-<li><p><strong>minlines</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
-<li><p><strong>line_group</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
-<li><p><strong>line_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+<li><p><strong>rows</strong> (<em>int</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
+<li><p><strong>minlines</strong> (<em>int</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
+<li><p><strong>line_group</strong> (<em>str</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Widget containing the labeled cell lines.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ipywidgets.ValueWidget</p>
+<dd class="field-even"><p>ipywidgets.ValueWidget Widget containing the labeled cell lines.</p>
 </dd>
 </dl>
 </dd></dl>

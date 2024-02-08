@@ -91,20 +91,25 @@
     <span class="k">def</span> <span class="nf">QuantizeByColumns</span><span class="p">(</span><span class="n">T</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Quantizes a 2D NumPy array column-wise.</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        T : np.ndarray</span>
-<span class="sd">            The input 2D array.</span>
-<span class="sd">        n : int</span>
-<span class="sd">            Number of quantization levels.</span>
-<span class="sd">        verbose : int, optional</span>
-<span class="sd">            Verbosity level for printing information (default: 0).</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Tuple[np.ndarray, np.ndarray]</span>
-<span class="sd">            Quantized array and threshold vector.</span>
+
+<span class="sd">        :param np.ndarray T: The input 2D array.</span>
+<span class="sd">        :param int n: Number of quantization levels.</span>
+<span class="sd">        :param int verbose: Verbosity level for printing information (default: 0).</span>
+
+<span class="sd">        :returns Tuple[np.ndarray, np.ndarray]: Tuple containing the quantized array and threshold vector.</span>
+
+<span class="sd">        :example</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import numpy as np</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            input_array = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])</span>
+<span class="sd">            quantization_levels = 3</span>
+<span class="sd">            verbosity = 1</span>
+
+<span class="sd">            quantized_array, threshold_vector = quantize_2d_array(input_array, quantization_levels, verbosity)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
         <span class="n">ValueForNaNs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
@@ -134,18 +139,23 @@
     <span class="k">def</span> <span class="nf">otsuthresholding</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes Otsu&#39;s threshold for image segmentation.</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        A : np.ndarray</span>
-<span class="sd">            Input array.</span>
-<span class="sd">        N : int</span>
-<span class="sd">            Number of classes (1 or 2).</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Tuple[float, float]</span>
-<span class="sd">            Threshold value and related metric.</span>
+
+<span class="sd">        :param np.ndarray A: Input array.</span>
+<span class="sd">        :param int N: Number of classes (1 or 2).</span>
+
+<span class="sd">        :returns Tuple[float, float]: Tuple containing the threshold value and related metric.</span>
+
+<span class="sd">        :example</span>
+<span class="sd">        </span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import numpy as np</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])</span>
+<span class="sd">            num_classes = 2</span>
+
+<span class="sd">            threshold_value, metric = otsu_threshold(input_array, num_classes)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;N must be either 1 or 2.&quot;</span><span class="p">)</span>
@@ -182,18 +192,23 @@
     <span class="k">def</span> <span class="nf">getpdf</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the probability density function (PDF) of an array.</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        A : np.ndarray</span>
-<span class="sd">            Input array.</span>
-<span class="sd">        num_bins : int</span>
-<span class="sd">            Number of bins for histogram.</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Tuple[np.ndarray, float, float]</span>
-<span class="sd">            PDF, minimum value, and maximum value.</span>
+
+<span class="sd">        :param np.ndarray A: Input array.</span>
+<span class="sd">        :param int num_bins: Number of bins for histogram.</span>
+
+<span class="sd">        :returns Tuple[np.ndarray, float, float]: Tuple containing the PDF, minimum value, and maximum value.</span>
+
+<span class="sd">        :example</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import numpy as np</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])</span>
+<span class="sd">            num_bins = 5</span>
+
+<span class="sd">            pdf, min_val, max_val = compute_pdf(input_array, num_bins)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>  <span class="c1"># Vectorize A for faster histogram computation</span>
 
@@ -230,24 +245,27 @@
     <span class="k">def</span> <span class="nf">compute_sigma_b_squared</span><span class="p">(</span><span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">omega</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mu_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes sigma_b_squared for Otsu&#39;s thresholding.</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        N : int</span>
-<span class="sd">            Number of classes (1 or 2).</span>
-<span class="sd">        num_bins : int</span>
-<span class="sd">            Number of bins for histogram.</span>
-<span class="sd">        omega : np.ndarray</span>
-<span class="sd">            Cumulative distribution function.</span>
-<span class="sd">        mu : np.ndarray</span>
-<span class="sd">            Cumulative mean values.</span>
-<span class="sd">        mu_t : float</span>
-<span class="sd">            Total mean.</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        np.ndarray</span>
-<span class="sd">        Sigma_b_squared values.</span>
+
+<span class="sd">        :param int N: Number of classes (1 or 2).</span>
+<span class="sd">        :param int num_bins: Number of bins for histogram.</span>
+<span class="sd">        :param np.ndarray omega: Cumulative distribution function.</span>
+<span class="sd">        :param np.ndarray mu: Cumulative mean values.</span>
+<span class="sd">        :param float mu_t: Total mean.</span>
+
+<span class="sd">        :returns np.ndarray: Sigma_b_squared values.</span>
+
+<span class="sd">        :example</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            N_value = 2</span>
+<span class="sd">            num_bins = 256</span>
+<span class="sd">            omega_array = np.array([0.2, 0.8])</span>
+<span class="sd">            mu_array = np.array([100.0, 150.0])</span>
+<span class="sd">            total_mean = 125.0</span>
+
+<span class="sd">            sigma_b_squared_values = compute_sigma_b_squared(N_value, num_bins, omega_array, mu_array, total_mean)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">sigma_b_squared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">omega</span><span class="p">))</span> <span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -283,18 +301,22 @@
     <span class="k">def</span> <span class="nf">modemax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">reducefoo</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the mode of an array along each row. In case of ex-aequo modes, return the value computed by reducefoo (default: max).</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        a : np.ndarray</span>
-<span class="sd">            Input 2D array.</span>
-<span class="sd">        reducefoo : Callable[[List[int]], int], optional</span>
-<span class="sd">            Reduction function (default: max).</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        np.ndarray</span>
-<span class="sd">            Mode values.</span>
+
+<span class="sd">        :param np.ndarray a: Input 2D array.</span>
+<span class="sd">        :param Callable[[List[int]], int] reducefoo: Reduction function (default: max).</span>
+
+<span class="sd">        :returns np.ndarray: Mode values.</span>
+
+<span class="sd">        :example</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            input_array = np.array([[1, 2, 3, 3],</span>
+<span class="sd">                                    [2, 3, 4, 4],</span>
+<span class="sd">                                    [4, 5, 6, 6]])</span>
+
+<span class="sd">            mode_values = compute_mode(input_array)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">reducefoo</span><span class="p">(</span><span class="n">statistics</span><span class="o">.</span><span class="n">multimode</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">,:]))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span></div>
 
@@ -307,28 +329,25 @@
                   <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Core function for HELP algorithm.</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        df : pd.DataFrame</span>
-<span class="sd">            Input DataFrame.</span>
-<span class="sd">        columns : List[str]</span>
-<span class="sd">            List of column names.</span>
-<span class="sd">        three_class : bool, optional</span>
-<span class="sd">            Flag for three-class labeling (default: False).</span>
-<span class="sd">        verbose : bool, optional</span>
-<span class="sd">            Verbosity level for printing information (default: False).</span>
-<span class="sd">        labelnames : Dict[int, str], optional</span>
-<span class="sd">            Dictionary mapping class labels to names (default: {0: &#39;E&#39;, 1: &#39;NE&#39;}).</span>
-<span class="sd">        rowname : str, optional</span>
-<span class="sd">            Name of the DataFrame index (default: &#39;gene&#39;).</span>
-<span class="sd">        colname : str, optional</span>
-<span class="sd">            Name of the label column (default: &#39;label&#39;).</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Tuple[pd.DataFrame, np.ndarray]</span>
-<span class="sd">            Output DataFrame and quantized array.</span>
+
+<span class="sd">        :param pd.DataFrame df: Input DataFrame.</span>
+<span class="sd">        :param List[str] columns: List of column names.</span>
+<span class="sd">        :param bool three_class: Flag for three-class labeling (default: False).</span>
+<span class="sd">        :param bool verbose: Verbosity level for printing information (default: False).</span>
+<span class="sd">        :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {0: &#39;E&#39;, 1: &#39;NE&#39;}).</span>
+<span class="sd">        :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
+<span class="sd">        :param str colname: Name of the label column (default: &#39;label&#39;).</span>
+
+<span class="sd">        :returns Tuple[pd.DataFrame, np.ndarray]: Output DataFrame and quantized array.</span>
+
+<span class="sd">        :example</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            input_df = pd.DataFrame(...)</span>
+<span class="sd">            columns_list = [&#39;feature1&#39;, &#39;feature2&#39;, &#39;feature3&#39;]</span>
+<span class="sd">            output_df, quantized_array = help_algorithm_core(input_df, columns_list, three_class=True, verbose=True, labelnames={0: &#39;E&#39;, 1: &#39;NE&#39;}, rowname=&#39;gene&#39;, colname=&#39;label&#39;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># check labelnames with two or three class modes</span>
         <span class="k">if</span> <span class="n">three_class</span><span class="p">:</span>
@@ -386,28 +405,24 @@
              <span class="n">rowname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Main function for HELP algorithm.</span>
-<span class="sd">    </span>
-<span class="sd">        Parameters:</span>
-<span class="sd">        -----------</span>
-<span class="sd">        df : pd.DataFrame</span>
-<span class="sd">            Input DataFrame.</span>
-<span class="sd">        columns : List[List[str]], optional</span>
-<span class="sd">            List of column names for partitioning (default: []).</span>
-<span class="sd">        three_class : bool, optional</span>
-<span class="sd">            Flag for three-class labeling (default: False).</span>
-<span class="sd">        verbose : bool, optional</span>
-<span class="sd">            Verbosity level for printing information (default: False).</span>
-<span class="sd">        labelnames : Dict[int, str], optional</span>
-<span class="sd">            Dictionary mapping class labels to names (default: {}).</span>
-<span class="sd">        rowname : str, optional</span>
-<span class="sd">            Name of the DataFrame index (default: &#39;gene&#39;).</span>
-<span class="sd">        colname : str, optional</span>
-<span class="sd">            Name of the label column (default: &#39;label&#39;).</span>
-<span class="sd">    </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pd.DataFrame</span>
-<span class="sd">            Output DataFrame with labels.</span>
+
+<span class="sd">        :param pd.DataFrame df: Input DataFrame.</span>
+<span class="sd">        :param List[List[str]] columns: List of column names for partitioning (default: []).</span>
+<span class="sd">        :param bool three_class: Flag for three-class labeling (default: False).</span>
+<span class="sd">        :param bool verbose: Verbosity level for printing information (default: False).</span>
+<span class="sd">        :param Dict[int, str] labelnames: Dictionary mapping class labels to names (default: {}).</span>
+<span class="sd">        :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
+<span class="sd">        :param str colname: Name of the label column (default: &#39;label&#39;).</span>
+
+<span class="sd">        :returns pd.DataFrame: Output DataFrame with labels.</span>
+
+<span class="sd">        :example</span>
+<span class="sd">       </span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            # Example usage</span>
+<span class="sd">            input_df = pd.DataFrame(...)</span>
+<span class="sd">            output_df = help_algorithm_main(input_df, columns=[], three_class=True, verbose=True, labelnames={0: &#39;E&#39;, 1: &#39;NE&#39;}, rowname=&#39;gene&#39;, colname=&#39;label&#39;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">labelnames</span> <span class="o">==</span> <span class="p">{}:</span>
             <span class="n">labelnames</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;aE&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">&#39;sNE&#39;</span><span class="p">}</span> <span class="k">if</span> <span class="n">three_class</span> <span class="k">else</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;NE&#39;</span><span class="p">}</span>

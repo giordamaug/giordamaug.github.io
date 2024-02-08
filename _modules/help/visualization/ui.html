@@ -86,10 +86,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Help Dashboard.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        verbose : bool, optional</span>
-<span class="sd">            Whether to print verbose messages during processing (default is False).</span>
+<span class="sd">        :param bool verbose: Whether to print verbose messages during processing (default is False).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
 
@@ -99,19 +96,11 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create an interactive widget for processing features.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        label_path : str, optional</span>
-<span class="sd">            Path to the label file (default is &quot;.&quot;).</span>
-<span class="sd">        feature_path : str, optional</span>
-<span class="sd">            Path to the feature files (default is &quot;.&quot;).</span>
-<span class="sd">        rows : int, optional</span>
-<span class="sd">            Number of rows to display in the widget (default is 5).</span>
+<span class="sd">        :param str label_path: Path to the label file (default is &quot;.&quot;).</span>
+<span class="sd">        :param str feature_path: Path to the feature files (default is &quot;.&quot;).</span>
+<span class="sd">        :param int rows: Number of rows to display in the widget (default is 5).</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        ipywidgets.ValueWidget</span>
-<span class="sd">            Widget containing the assembled features and labels DataFrames.</span>
+<span class="sd">        :return: ipywidgets.ValueWidget Widget containing the assembled features and labels DataFrames.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">layout_hidden</span>  <span class="o">=</span> <span class="n">wid</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">visibility</span> <span class="o">=</span> <span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
         <span class="n">layout_visible</span> <span class="o">=</span> <span class="n">wid</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">visibility</span> <span class="o">=</span> <span class="s1">&#39;visible&#39;</span><span class="p">)</span>
@@ -190,25 +179,14 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate an interactive widget for labeling cell lines based on specified criteria.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        df : pd.DataFrame</span>
-<span class="sd">            The main DataFrame containing the data.</span>
-<span class="sd">        df_map : pd.DataFrame</span>
-<span class="sd">            A DataFrame used for mapping data.</span>
-<span class="sd">        rows : int, optional</span>
-<span class="sd">            The number of rows to display in the widget for selecting tissues (default is 5).</span>
-<span class="sd">        minlines : int, optional</span>
-<span class="sd">            Minimum number of cell lines for tissue/lineage to be considered (default is 1).</span>
-<span class="sd">        line_group : str, optional</span>
-<span class="sd">            The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
-<span class="sd">        line_col : str, optional</span>
-<span class="sd">            The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
+<span class="sd">        :param pd.DataFrame df: The main DataFrame containing the data.</span>
+<span class="sd">        :param pd.DataFrame df_map: A DataFrame used for mapping data.</span>
+<span class="sd">        :param int rows: The number of rows to display in the widget for selecting tissues (default is 5).</span>
+<span class="sd">        :param int minlines: Minimum number of cell lines for tissue/lineage to be considered (default is 1).</span>
+<span class="sd">        :param str line_group: The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
+<span class="sd">        :param str line_col: The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        ipywidgets.ValueWidget</span>
-<span class="sd">            Widget containing the labeled cell lines.</span>
+<span class="sd">        :return: ipywidgets.ValueWidget Widget containing the labeled cell lines.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">tl</span> <span class="o">=</span> <span class="n">df_map</span><span class="p">[</span><span class="n">line_group</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -290,25 +268,14 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate an interactive widget for labeling cell lines based on specified criteria.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        df : pd.DataFrame</span>
-<span class="sd">            The main DataFrame containing the data.</span>
-<span class="sd">        df_map : pd.DataFrame</span>
-<span class="sd">            A DataFrame used for mapping data.</span>
-<span class="sd">        rows : int, optional</span>
-<span class="sd">            The number of rows to display in the widget for selecting tissues (default is 5).</span>
-<span class="sd">        minlines : int, optional</span>
-<span class="sd">            Minimum number of cell lines for tissue/lineage to be considered (default is 1).</span>
-<span class="sd">        line_group : str, optional</span>
-<span class="sd">            The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
-<span class="sd">        line_col : str, optional</span>
-<span class="sd">            The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
+<span class="sd">        :param pd.DataFrame df: The main DataFrame containing the data.</span>
+<span class="sd">        :param pd.DataFrame df_map: A DataFrame used for mapping data.</span>
+<span class="sd">        :param int rows: The number of rows to display in the widget for selecting tissues (default is 5).</span>
+<span class="sd">        :param int minlines: Minimum number of cell lines for tissue/lineage to be considered (default is 1).</span>
+<span class="sd">        :param str line_group: The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
+<span class="sd">        :param str line_col: The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        ipywidgets.ValueWidget</span>
-<span class="sd">            Widget containing the labeled cell lines.</span>
+<span class="sd">        :return: ipywidgets.ValueWidget Widget containing the labeled cell lines.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">tl</span> <span class="o">=</span> <span class="n">df_map</span><span class="p">[</span><span class="n">line_group</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>

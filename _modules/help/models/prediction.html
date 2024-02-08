@@ -96,31 +96,26 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform cross-validated predictions using a LightGBM classifier.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    X : DataFrame</span>
-<span class="sd">        Features DataFrame.</span>
-<span class="sd">    Y : DataFrame</span>
-<span class="sd">        Target variable DataFrame.</span>
-<span class="sd">    n_splits : int</span>
-<span class="sd">        Number of folds for cross-validation.</span>
-<span class="sd">    balanced : bool, optional</span>
-<span class="sd">        Whether to use class weights to balance the classes.</span>
-<span class="sd">    saveflag : bool, optional</span>
-<span class="sd">        Whether to save the predictions to a CSV file.</span>
-<span class="sd">    outfile : str or None, optional</span>
-<span class="sd">        File name for saving predictions.</span>
-<span class="sd">    verbose : bool, optional</span>
-<span class="sd">        Whether to print verbose information.</span>
-<span class="sd">    display : bool, optional</span>
-<span class="sd">        Whether to display a confusion matrix plot.</span>
-<span class="sd">    seed : int or None, optional</span>
-<span class="sd">        Random seed for reproducibility.</span>
+<span class="sd">    :param DataFrame X: Features DataFrame.</span>
+<span class="sd">    :param DataFrame Y: Target variable DataFrame.</span>
+<span class="sd">    :param int n_splits: Number of folds for cross-validation.</span>
+<span class="sd">    :param bool balanced: Whether to use class weights to balance the classes.</span>
+<span class="sd">    :param bool saveflag: Whether to save the predictions to a CSV file.</span>
+<span class="sd">    :param str or None outfile: File name for saving predictions.</span>
+<span class="sd">    :param bool verbose: Whether to print verbose information.</span>
+<span class="sd">    :param bool display: Whether to display a confusion matrix plot.</span>
+<span class="sd">    :param int or None seed: Random seed for reproducibility.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    DataFrame</span>
-<span class="sd">        Summary statistics of the cross-validated predictions.</span>
+<span class="sd">    :returns pd.DataFrame: Summary statistics of the cross-validated predictions.</span>
+
+<span class="sd">    :example</span>
+<span class="sd"> </span>
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        # Example usage</span>
+<span class="sd">        X_data = pd.DataFrame(...)</span>
+<span class="sd">        Y_data = pd.DataFrame(...)</span>
+<span class="sd">        result = perform_lgbm_cross_val(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># get the list of genes</span>
     <span class="n">genes</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">index</span>
@@ -191,7 +186,7 @@
 
     <span class="c1"># Display confusion matrix if requested</span>
     <span class="k">if</span> <span class="n">display</span><span class="p">:</span>
-        <span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cma</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+        <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cma</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 
     <span class="c1"># Create DataFrame for storing detailed predictions</span>
     <span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;gene&#39;</span><span class="p">:</span> <span class="n">gg</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">yy</span><span class="p">,</span> <span class="s1">&#39;prediction&#39;</span><span class="p">:</span> <span class="n">predictions</span><span class="p">})</span>

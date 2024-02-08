@@ -85,29 +85,25 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Select cell lines based on tissue and mapping information.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    df : pd.DataFrame</span>
-<span class="sd">        DataFrame containing cell line information.</span>
-<span class="sd">    df_map : pd.DataFrame</span>
-<span class="sd">        DataFrame containing mapping information.</span>
-<span class="sd">    tissue_list : List[str]</span>
-<span class="sd">        List of tissues for which cell lines need to be selected.</span>
-<span class="sd">    line_group : str, optional</span>
-<span class="sd">        The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
-<span class="sd">    line_col : str, optional</span>
-<span class="sd">        The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
-<span class="sd">    nested : bool, optional</span>
-<span class="sd">        Whether to return cell lines as nested lists (lists for each tissue).</span>
-<span class="sd">    verbose : int, optional</span>
-<span class="sd">        Verbosity level for printing information.</span>
+<span class="sd">    :param pd.DataFrame df: DataFrame containing cell line information.</span>
+<span class="sd">    :param pd.DataFrame df_map: DataFrame containing mapping information.</span>
+<span class="sd">    :param List[str] tissue_list: List of tissues for which cell lines need to be selected.</span>
+<span class="sd">    :param str line_group: The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
+<span class="sd">    :param str line_col: The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
+<span class="sd">    :param bool nested: Whether to return cell lines as nested lists (lists for each tissue).</span>
+<span class="sd">    :param int verbose: Verbosity level for printing information.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    List</span>
-<span class="sd">        List of selected cell lines, either flattened or nested based on the &#39;nested&#39; parameter.</span>
+<span class="sd">    :return: List List of selected cell lines, either flattened or nested based on the &#39;nested&#39; parameter.</span>
+
+<span class="sd">    :example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        df = pd.DataFrame(...)</span>
+<span class="sd">        df_map = pd.DataFrame(...)</span>
+<span class="sd">        tissue_list = [&#39;Tissue1&#39;, &#39;Tissue2&#39;]</span>
+<span class="sd">        selected_lines = select_cell_lines(df, df_map, tissue_list, line_group=&#39;OncotreeLineage&#39;, line_col=&#39;ModelID&#39;, nested=False, verbose=1)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="c1"># Iterate over each tissue in the provided list</span>
@@ -230,40 +226,34 @@
 
                              
 <span class="c1"># Compute intersection of essential genes by tissues</span>
-<div class="viewcode-block" id="EG_by_tissues_intersect">
-<a class="viewcode-back" href="../../../help.utility.html#help.utility.selection.EG_by_tissues_intersect">[docs]</a>
-<span class="k">def</span> <span class="nf">EG_by_tissues_intersect</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_map</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">tissues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">subtract_common</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">three_class</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="EG_tissues_intersect_dolabelling">
+<a class="viewcode-back" href="../../../help.utility.html#help.utility.selection.EG_tissues_intersect_dolabelling">[docs]</a>
+<span class="k">def</span> <span class="nf">EG_tissues_intersect_dolabelling</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_map</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">tissues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">subtract_common</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">three_class</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                               <span class="n">display</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">barheight</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">barwidth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">17</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Identify overlapping and unique Essential Genes (EGs) by tissues.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    df : pd.DataFrame</span>
-<span class="sd">        DataFrame containing cell line information.</span>
-<span class="sd">    df_map : pd.DataFrame</span>
-<span class="sd">        DataFrame containing mapping information.</span>
-<span class="sd">    tissues : List[str]</span>
-<span class="sd">        List of tissues for which EGs need to be identified.</span>
-<span class="sd">    subtract_common : bool, optional</span>
-<span class="sd">        Whether to subtract common EGs from pantissue labeling.</span>
-<span class="sd">    three_class : bool, optional</span>
-<span class="sd">        Whether to use a three-class labeling (E, NE, NC).</span>
-<span class="sd">    display : bool, optional</span>
-<span class="sd">        Whether to display a Venn diagram.</span>
-<span class="sd">    verbose : bool, optional</span>
-<span class="sd">        Verbosity level for printing information.</span>
-<span class="sd">    barheight : int, optional</span>
-<span class="sd">        Height of the Venn diagram.</span>
-<span class="sd">    barwidth : int, optional</span>
-<span class="sd">        Width of the Venn diagram.</span>
-<span class="sd">    fontsize : int, optional</span>
-<span class="sd">        Font size for the Venn diagram.</span>
+<span class="sd">    :param pd.DataFrame df: DataFrame containing cell line information.</span>
+<span class="sd">    :param pd.DataFrame df_map: DataFrame containing mapping information.</span>
+<span class="sd">    :param List[str] tissues: List of tissues for which EGs need to be identified.</span>
+<span class="sd">    :param bool subtract_common: Whether to subtract common EGs from pantissue labeling.</span>
+<span class="sd">    :param bool three_class: Whether to use a three-class labeling (E, NE, NC).</span>
+<span class="sd">    :param bool display: Whether to display a Venn diagram.</span>
+<span class="sd">    :param bool verbose: Verbosity level for printing information.</span>
+<span class="sd">    :param int barheight: Height of the Venn diagram.</span>
+<span class="sd">    :param int barwidth: Width of the Venn diagram.</span>
+<span class="sd">    :param int fontsize: Font size for the Venn diagram.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Tuple[pd.DataFrame]</span>
-<span class="sd">        Tuple containing sets of EGs, intersection of EGs, and differences in EGs.</span>
+<span class="sd">    :return: Tuple[List[set], set, Dict[str, set]] Tuple containing sets of EGs, intersection of EGs, and differences in EGs.</span>
+<span class="sd">    </span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        df = pd.DataFrame(...)</span>
+<span class="sd">        df_map = pd.DataFrame(...)</span>
+<span class="sd">        tissues = [&#39;Tissue1&#39;, &#39;Tissue2&#39;]</span>
+<span class="sd">        sets, inset, diffs = EG_tissues_intersect_dolabelling(df, df_map, tissues, subtract_common=True, three_class=False, display=True, verbose=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
  
     <span class="n">sets</span> <span class="o">=</span> <span class="p">[]</span>

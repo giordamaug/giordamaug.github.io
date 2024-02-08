@@ -79,35 +79,26 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a Supervenn diagram to visualize the intersection of multiple sets.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    sets : List[set]</span>
-<span class="sd">        List of sets to be visualized.</span>
-<span class="sd">    labels : List[str]</span>
-<span class="sd">        List of labels corresponding to each set.</span>
-<span class="sd">    figsize : tuple, optional</span>
-<span class="sd">        Figure size in inches, as a tuple (width, height) (default is (10, 20)).</span>
-<span class="sd">    fontsize : int, optional</span>
-<span class="sd">        Font size for labels (default is 10).</span>
-<span class="sd">    saveflag : bool, optional</span>
-<span class="sd">        Whether to save the generated diagram as an image (default is False).</span>
+<span class="sd">    :param List[set] sets: List of sets to be visualized.</span>
+<span class="sd">    :param List[str] labels: List of labels corresponding to each set.</span>
+<span class="sd">    :param tuple figsize: Figure size in inches, as a tuple (width, height) (default is (10, 20)).</span>
+<span class="sd">    :param int fontsize: Font size for labels (default is 10).</span>
+<span class="sd">    :param bool saveflag: Whether to save the generated diagram as an image (default is False).</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    None</span>
+<span class="sd">    :return: None</span>
 
 <span class="sd">    The function generates a Supervenn diagram using the &#39;supervenn&#39; library and Matplotlib.</span>
 <span class="sd">    The diagram visualizes the intersection of multiple sets with labeled areas.</span>
 
-<span class="sd">    Example</span>
-<span class="sd">    -------</span>
-<span class="sd">    ```</span>
-<span class="sd">    # Usage example:</span>
-<span class="sd">    set1 = {1, 2, 3, 4, 5}</span>
-<span class="sd">    set2 = {3, 4, 5, 6, 7}</span>
-<span class="sd">    set3 = {5, 6, 7, 8, 9}</span>
-<span class="sd">    svenn_intersect([set1, set2, set3], [&quot;Set A&quot;, &quot;Set B&quot;, &quot;Set C&quot;], saveflag=True)</span>
-<span class="sd">    ```</span>
+<span class="sd">    :example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        # Usage example:</span>
+<span class="sd">        set1 = {1, 2, 3, 4, 5}</span>
+<span class="sd">        set2 = {3, 4, 5, 6, 7}</span>
+<span class="sd">        set3 = {5, 6, 7, 8, 9}</span>
+<span class="sd">        svenn_intesect([set1, set2, set3], [&quot;Set A&quot;, &quot;Set B&quot;, &quot;Set C&quot;], saveflag=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
     <span class="n">supervenn</span><span class="p">(</span><span class="n">sets</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">widths_minmax_ratio</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">side_plots</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>

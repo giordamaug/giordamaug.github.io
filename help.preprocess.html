@@ -116,11 +116,14 @@ Optional, default is np.nan.</p></li>
 Optional, default is “uniform”.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns pd.DataFrame<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>DataFrame with missing values imputed using KNN.</p>
 </dd>
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -155,8 +158,11 @@ result = imputer_knn(df, n_neighbors=3, missing_values=np.nan, weights=”distan
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>DataFrame with missing values imputed using KNN grouped by lineages.</p>
 </dd>
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -189,8 +195,11 @@ Optional, default is np.nan.</p></li>
 Optional, default is “mean”.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return pd.DataFrame<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>DataFrame with missing values imputed using mean imputation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 <p>:example</p>
@@ -227,8 +236,11 @@ Default is [{‘fname’: ‘bio+gtex.csv’, ‘fixna’ : True, ‘normalize�
 <li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print verbose messages during processing. Default is False.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns Tuple[pd.DataFrame, pd.DataFrame]<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tuple containing the assembled features (X) and labels (Y) DataFrames.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[pd.DataFrame, pd.DataFrame]</p>
 </dd>
 </dl>
 <p>:example</p>

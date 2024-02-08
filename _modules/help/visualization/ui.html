@@ -105,7 +105,8 @@
 <span class="sd">        :param str feature_path: Path to the feature files (default is &quot;.&quot;).</span>
 <span class="sd">        :param int rows: Number of rows to display in the widget (default is 5).</span>
 
-<span class="sd">        :return: ipywidgets.ValueWidget Widget containing the assembled features and labels DataFrames.</span>
+<span class="sd">        :return: Widget containing the assembled features and labels DataFrames.</span>
+<span class="sd">        :rtype: ipywidgets.ValueWidget</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">layout_hidden</span>  <span class="o">=</span> <span class="n">wid</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">visibility</span> <span class="o">=</span> <span class="s1">&#39;hidden&#39;</span><span class="p">)</span>
         <span class="n">layout_visible</span> <span class="o">=</span> <span class="n">wid</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">visibility</span> <span class="o">=</span> <span class="s1">&#39;visible&#39;</span><span class="p">)</span>
@@ -191,7 +192,8 @@
 <span class="sd">        :param str line_group: The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
 <span class="sd">        :param str line_col: The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
 
-<span class="sd">        :return: ipywidgets.ValueWidget Widget containing the labeled cell lines.</span>
+<span class="sd">        :return: Widget containing the labeled cell lines.</span>
+<span class="sd">        :rtype: ipywidgets.ValueWidget</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">tl</span> <span class="o">=</span> <span class="n">df_map</span><span class="p">[</span><span class="n">line_group</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -280,7 +282,8 @@
 <span class="sd">        :param str line_group: The column in &#39;df_map&#39; to use for tissue selection (default is &#39;OncotreeLineage&#39;).</span>
 <span class="sd">        :param str line_col: The column in &#39;df_map&#39; to use for line selection (default is &#39;ModelID&#39;).</span>
 
-<span class="sd">        :return: ipywidgets.ValueWidget Widget containing the labeled cell lines.</span>
+<span class="sd">        :return:  Widget containing the labeled cell lines.</span>
+<span class="sd">        :rtype: ipywidgets.ValueWidget</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">tl</span> <span class="o">=</span> <span class="n">df_map</span><span class="p">[</span><span class="n">line_group</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>

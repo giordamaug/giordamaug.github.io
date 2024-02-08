@@ -98,7 +98,8 @@
 <span class="sd">    :param bool nested: Whether to return cell lines as nested lists (lists for each tissue).</span>
 <span class="sd">    :param int verbose: Verbosity level for printing information.</span>
 
-<span class="sd">    :return: List List of selected cell lines, either flattened or nested based on the &#39;nested&#39; parameter.</span>
+<span class="sd">    :return: List of selected cell lines, either flattened or nested based on the &#39;nested&#39; parameter.</span>
+<span class="sd">    :rtype: List</span>
 
 <span class="sd">    :example:</span>
 
@@ -171,8 +172,9 @@
 <span class="sd">    :param int barwidth: Width of the Venn diagram.</span>
 <span class="sd">    :param int fontsize: Font size of the Venn diagram labels.</span>
 
-<span class="sd">    :return: Tuple[Dict[str, set], set, Dict[str, set]] A tuple containing sets of genes for each tissue,</span>
+<span class="sd">    :return: A tuple containing sets of genes for each tissue,</span>
 <span class="sd">             the intersection of genes, and differences in genes.</span>
+<span class="sd">    :rtype: Tuple[Dict[str, set], set, Dict[str, set]] </span>
 
 <span class="sd">    :example:</span>
 
@@ -249,8 +251,8 @@
 <span class="sd">    :param int barwidth: Width of the Venn diagram.</span>
 <span class="sd">    :param int fontsize: Font size for the Venn diagram.</span>
 
-<span class="sd">    :return: Tuple[List[set], set, Dict[str, set]] Tuple containing sets of EGs, intersection of EGs, and differences in EGs.</span>
-<span class="sd">    </span>
+<span class="sd">    :return: Tuple containing sets of EGs, intersection of EGs, and differences in EGs.</span>
+<span class="sd">    :rtype: Tuple[List[set], set, Dict[str, set]] </span>
 <span class="sd">    :example:</span>
 
 <span class="sd">    .. code-block:: python</span>

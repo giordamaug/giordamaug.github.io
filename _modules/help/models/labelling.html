@@ -101,7 +101,8 @@
 <span class="sd">        :param int n: Number of quantization levels.</span>
 <span class="sd">        :param int verbose: Verbosity level for printing information (default: 0).</span>
 
-<span class="sd">        :returns Tuple[np.ndarray, np.ndarray]: Tuple containing the quantized array and threshold vector.</span>
+<span class="sd">        :returns: Tuple containing the quantized array and threshold vector.</span>
+<span class="sd">        :rtype: Tuple[np.ndarray, np.ndarray]</span>
 
 <span class="sd">        :example</span>
 
@@ -149,7 +150,8 @@
 <span class="sd">        :param np.ndarray A: Input array.</span>
 <span class="sd">        :param int N: Number of classes (1 or 2).</span>
 
-<span class="sd">        :returns Tuple[float, float]: Tuple containing the threshold value and related metric.</span>
+<span class="sd">        :returns: Tuple containing the threshold value and related metric.</span>
+<span class="sd">        :rtype: Tuple[float, float]</span>
 
 <span class="sd">        :example</span>
 <span class="sd">        </span>
@@ -203,7 +205,8 @@
 <span class="sd">        :param np.ndarray A: Input array.</span>
 <span class="sd">        :param int num_bins: Number of bins for histogram.</span>
 
-<span class="sd">        :returns Tuple[np.ndarray, float, float]: Tuple containing the PDF, minimum value, and maximum value.</span>
+<span class="sd">        :returns: Tuple containing the PDF, minimum value, and maximum value.</span>
+<span class="sd">        :rtype: Tuple[np.ndarray, float, float]</span>
 
 <span class="sd">        :example</span>
 
@@ -260,7 +263,8 @@
 <span class="sd">        :param np.ndarray mu: Cumulative mean values.</span>
 <span class="sd">        :param float mu_t: Total mean.</span>
 
-<span class="sd">        :returns np.ndarray: Sigma_b_squared values.</span>
+<span class="sd">        :returns: Sigma_b_squared values.</span>
+<span class="sd">        :rtype: np.ndarray</span>
 
 <span class="sd">        :example</span>
 
@@ -314,7 +318,8 @@
 <span class="sd">        :param np.ndarray a: Input 2D array.</span>
 <span class="sd">        :param Callable[[List[int]], int] reducefoo: Reduction function (default: max).</span>
 
-<span class="sd">        :returns np.ndarray: Mode values.</span>
+<span class="sd">        :returns: Mode values.</span>
+<span class="sd">        :rtype: np.ndarray</span>
 
 <span class="sd">        :example</span>
 
@@ -348,7 +353,8 @@
 <span class="sd">        :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
 <span class="sd">        :param str colname: Name of the label column (default: &#39;label&#39;).</span>
 
-<span class="sd">        :returns Tuple[pd.DataFrame, np.ndarray]: Output DataFrame and quantized array.</span>
+<span class="sd">        :returns: Output DataFrame and quantized array.</span>
+<span class="sd">        :rtype: Tuple[pd.DataFrame, np.ndarray]</span>
 
 <span class="sd">        :example</span>
 
@@ -425,7 +431,8 @@
 <span class="sd">        :param str rowname: Name of the DataFrame index (default: &#39;gene&#39;).</span>
 <span class="sd">        :param str colname: Name of the label column (default: &#39;label&#39;).</span>
 
-<span class="sd">        :returns pd.DataFrame: Output DataFrame with labels.</span>
+<span class="sd">        :returns: Output DataFrame with labels.</span>
+<span class="sd">        :rtype: pd.DataFrame</span>
 
 <span class="sd">        :example</span>
 <span class="sd">       </span>

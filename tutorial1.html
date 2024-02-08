@@ -7,6 +7,7 @@
   <title>EG detection and predition for two tissues &mdash; HELP 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-gallery.css" />
 
   
   <!--[if lt IE 9]>
@@ -58,6 +59,14 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#context-specific-egs">Context specific EGs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#process-the-tissue-attributes">Process the tissue attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#prediction">Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html">Load the CRISPR data file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#imputation-of-data">Imputation of data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#select-all-tissues-pan-tissue">Select all tissues (pan-tissue)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#select-some-tissues">Select some tissues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#context-specific-egs">Context specific EGs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#process-the-tissue-attributes">Process the tissue attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#prediction">Prediction</a></li>
 </ul>
 </li>
 </ul>
@@ -89,10 +98,10 @@
   <section id="eg-detection-and-predition-for-two-tissues">
 <h1>EG detection and predition for two tissues<a class="headerlink" href="#eg-detection-and-predition-for-two-tissues" title="Link to this heading"></a></h1>
 <p>In notebook we show how</p>
-<p>1. starting from the CRISPR file we apply the HELP labelling algorithm to detect essential genes (EGs) and non-essentials
+<p>#. starting from the CRISPR file we apply the HELP labelling algorithm to detect essential genes (EGs) and non-essentials
 genes (NEGs) in two tissues and in all tissues (pan-tissue).
-2. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
-3. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs.</p>
+#. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
+#. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -105,6 +114,14 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
 <li class="toctree-l1"><a class="reference internal" href="tutorial1/Workflow_1.html#process-the-tissue-attributes">Process the tissue attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1/Workflow_1.html#prediction">Prediction</a></li>
 </ul>
+</div>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="tutorial1/Workflow_1.html">
+  <div><img alt="" src="./_static/nbsphinx-no-thumbnail.svg"></div>
+  <div>Load the CRISPR data file</div>
+</a>
+</div>
 </div>
 </section>
 

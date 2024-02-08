@@ -45,9 +45,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="help.html">help package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="help.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="help.models.html">help.models package</a></li>
@@ -65,6 +68,9 @@
 <li class="toctree-l2"><a class="reference internal" href="help.html#module-help">Module contents</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html">EG detection and predition for two tissues</a></li>
 </ul>
 
@@ -149,10 +155,10 @@ The diagram visualizes the intersection of multiple sets with labeled areas.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The main DataFrame containing the data.</p></li>
 <li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – A DataFrame used for mapping data.</p></li>
-<li><p><strong>rows</strong> (<em>int</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
-<li><p><strong>minlines</strong> (<em>int</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
-<li><p><strong>line_group</strong> (<em>str</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
-<li><p><strong>line_col</strong> (<em>str</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
+<li><p><strong>minlines</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
+<li><p><strong>line_group</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -171,9 +177,9 @@ The diagram visualizes the intersection of multiple sets with labeled areas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>label_path</strong> (<em>str</em>) – Path to the label file (default is “.”).</p></li>
-<li><p><strong>feature_path</strong> (<em>str</em>) – Path to the feature files (default is “.”).</p></li>
-<li><p><strong>rows</strong> (<em>int</em>) – Number of rows to display in the widget (default is 5).</p></li>
+<li><p><strong>label_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the label file (default is “.”).</p></li>
+<li><p><strong>feature_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to the feature files (default is “.”).</p></li>
+<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of rows to display in the widget (default is 5).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -194,10 +200,10 @@ The diagram visualizes the intersection of multiple sets with labeled areas.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The main DataFrame containing the data.</p></li>
 <li><p><strong>df_map</strong> (<em>pd.DataFrame</em>) – A DataFrame used for mapping data.</p></li>
-<li><p><strong>rows</strong> (<em>int</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
-<li><p><strong>minlines</strong> (<em>int</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
-<li><p><strong>line_group</strong> (<em>str</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
-<li><p><strong>line_col</strong> (<em>str</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
+<li><p><strong>rows</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of rows to display in the widget for selecting tissues (default is 5).</p></li>
+<li><p><strong>minlines</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum number of cell lines for tissue/lineage to be considered (default is 1).</p></li>
+<li><p><strong>line_group</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for tissue selection (default is ‘OncotreeLineage’).</p></li>
+<li><p><strong>line_col</strong> (<em>str</em><em>, </em><em>optional</em>) – The column in ‘df_map’ to use for line selection (default is ‘ModelID’).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

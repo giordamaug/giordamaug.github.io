@@ -45,9 +45,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="help.html">help package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="help.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="help.models.html">help.models package</a></li>
@@ -64,6 +67,9 @@
 <li class="toctree-l2"><a class="reference internal" href="help.html#module-help">Module contents</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html">EG detection and predition for two tissues</a></li>
 </ul>
 
@@ -127,12 +133,11 @@ the intersection of genes, and differences in genes.</p>
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tissues</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tissue1&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="s1">&#39;Tissue2&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="o">...</span><span class="p">}</span>
+<span class="n">common_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># Optional</span>
+<span class="n">sets</span><span class="p">,</span> <span class="n">inset</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect</span><span class="p">(</span><span class="n">tissues</span><span class="p">,</span> <span class="n">common_df</span><span class="p">,</span> <span class="n">labelname</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">labelval</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>tissues = {‘Tissue1’: pd.DataFrame(…), ‘Tissue2’: pd.DataFrame(…), …}
-common_df = pd.DataFrame(…)  # Optional
-sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname=’label’, labelval=’E’, display=True)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -196,13 +201,12 @@ sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname=’label
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">tissue_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tissue1&#39;</span><span class="p">,</span> <span class="s1">&#39;Tissue2&#39;</span><span class="p">]</span>
+<span class="n">selected_lines</span> <span class="o">=</span> <span class="n">select_cell_lines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissue_list</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">,</span> <span class="n">line_col</span><span class="o">=</span><span class="s1">&#39;ModelID&#39;</span><span class="p">,</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>df = pd.DataFrame(…)
-df_map = pd.DataFrame(…)
-tissue_list = [‘Tissue1’, ‘Tissue2’]
-selected_lines = select_cell_lines(df, df_map, tissue_list, line_group=’OncotreeLineage’, line_col=’ModelID’, nested=False, verbose=1)</p>
 </dd></dl>
 
 <dl class="py function">

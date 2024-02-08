@@ -42,10 +42,16 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PACKAGE REFERENCE:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../help.html">help package</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial1.html">EG detection and predition for two tissues</a></li>
 </ul>
 
@@ -105,10 +111,10 @@
 
 <span class="sd">    .. code-block:: python</span>
 
-<span class="sd">    df = pd.DataFrame(...)</span>
-<span class="sd">    df_map = pd.DataFrame(...)</span>
-<span class="sd">    tissue_list = [&#39;Tissue1&#39;, &#39;Tissue2&#39;]</span>
-<span class="sd">    selected_lines = select_cell_lines(df, df_map, tissue_list, line_group=&#39;OncotreeLineage&#39;, line_col=&#39;ModelID&#39;, nested=False, verbose=1)</span>
+<span class="sd">        df = pd.DataFrame(...)</span>
+<span class="sd">        df_map = pd.DataFrame(...)</span>
+<span class="sd">        tissue_list = [&#39;Tissue1&#39;, &#39;Tissue2&#39;]</span>
+<span class="sd">        selected_lines = select_cell_lines(df, df_map, tissue_list, line_group=&#39;OncotreeLineage&#39;, line_col=&#39;ModelID&#39;, nested=False, verbose=1)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -180,9 +186,9 @@
 
 <span class="sd">    .. code-block:: python</span>
 
-<span class="sd">    tissues = {&#39;Tissue1&#39;: pd.DataFrame(...), &#39;Tissue2&#39;: pd.DataFrame(...), ...}</span>
-<span class="sd">    common_df = pd.DataFrame(...)  # Optional</span>
-<span class="sd">    sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname=&#39;label&#39;, labelval=&#39;E&#39;, display=True)</span>
+<span class="sd">        tissues = {&#39;Tissue1&#39;: pd.DataFrame(...), &#39;Tissue2&#39;: pd.DataFrame(...), ...}</span>
+<span class="sd">        common_df = pd.DataFrame(...)  # Optional</span>
+<span class="sd">        sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname=&#39;label&#39;, labelval=&#39;E&#39;, display=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sets</span> <span class="o">=</span> <span class="p">{}</span>
 

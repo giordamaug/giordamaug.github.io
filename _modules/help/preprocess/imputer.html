@@ -102,19 +102,19 @@
 
 <span class="sd">    .. code-block:: python</span>
 
-<span class="sd">        from sklearn.impute import KNNImputer</span>
-<span class="sd">        import pandas as pd</span>
+<span class="sd">    from sklearn.impute import KNNImputer</span>
+<span class="sd">    import pandas as pd</span>
 
-<span class="sd">        # Create a DataFrame with missing values</span>
-<span class="sd">        data = {&#39;A&#39;: [1, 2, np.nan, 4], &#39;B&#39;: [5, np.nan, 7, 8]}</span>
-<span class="sd">        df = pd.DataFrame(data)</span>
+<span class="sd">    # Create a DataFrame with missing values</span>
+<span class="sd">    data = {&#39;A&#39;: [1, 2, np.nan, 4], &#39;B&#39;: [5, np.nan, 7, 8]}</span>
+<span class="sd">    df = pd.DataFrame(data)</span>
 
-<span class="sd">        # Create a mapping DataFrame</span>
-<span class="sd">        data_map = {&#39;ModelID&#39;: [&#39;M1&#39;, &#39;M2&#39;, &#39;M3&#39;, &#39;M4&#39;], &#39;OncotreeLineage&#39;: [&#39;L1&#39;, &#39;L2&#39;, &#39;L1&#39;, &#39;L2&#39;]}</span>
-<span class="sd">        df_map = pd.DataFrame(data_map)</span>
+<span class="sd">    # Create a mapping DataFrame</span>
+<span class="sd">    data_map = {&#39;ModelID&#39;: [&#39;M1&#39;, &#39;M2&#39;, &#39;M3&#39;, &#39;M4&#39;], &#39;OncotreeLineage&#39;: [&#39;L1&#39;, &#39;L2&#39;, &#39;L1&#39;, &#39;L2&#39;]}</span>
+<span class="sd">    df_map = pd.DataFrame(data_map)</span>
 
-<span class="sd">        # Impute missing values using KNN imputation grouped by lineages</span>
-<span class="sd">        result = imputer_knn_group(df, df_map, line_group=&#39;OncotreeLineage&#39;, line_col=&#39;ModelID&#39;, n_neighbors=3, missing_values=np.nan, weights=&quot;distance&quot;, verbose=True)</span>
+<span class="sd">    # Impute missing values using KNN imputation grouped by lineages</span>
+<span class="sd">    result = imputer_knn_group(df, df_map, line_group=&#39;OncotreeLineage&#39;, line_col=&#39;ModelID&#39;, n_neighbors=3, missing_values=np.nan, weights=&quot;distance&quot;, verbose=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tissuel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df_map</span><span class="p">[</span><span class="n">df_map</span><span class="p">[</span><span class="n">line_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)][</span><span class="n">line_group</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
     <span class="n">dfout</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -185,7 +185,7 @@
 <span class="sd">    :return: DataFrame with missing values imputed using mean imputation.</span>
 <span class="sd">    :rtype: pd.DataFrame</span>
 
-<span class="sd">    :example</span>
+<span class="sd">    :example:</span>
 
 <span class="sd">    .. code-block:: python</span>
 

@@ -14,7 +14,7 @@ The HELP framework for essential Genes detection and prediction.
 
    install
    help
-   notebook
+   tutorial1
 
 Indices and tables
 ==================

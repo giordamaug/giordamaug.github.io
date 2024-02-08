@@ -115,7 +115,7 @@
 <span class="sd">        # Example usage</span>
 <span class="sd">        X_data = pd.DataFrame(...)</span>
 <span class="sd">        Y_data = pd.DataFrame(...)</span>
-<span class="sd">        result = perform_lgbm_cross_val(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)</span>
+<span class="sd">        result = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># get the list of genes</span>
     <span class="n">genes</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">index</span>

@@ -10,10 +10,20 @@ The HELP framework for essential Genes detection and prediction.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: NOTES:
 
    install
+
+.. toctree::
+   :maxdepth: 1
+   :caption: PACKAGE REFERENCE:
+   
    help
+
+.. toctree::
+   :maxdepth: 1
+   :caption: EXAMPLES:
+
    tutorial1
 
 Indices and tables

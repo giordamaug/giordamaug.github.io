@@ -4,6 +4,14 @@ help.preprocess package
 Submodules
 ----------
 
+help.preprocess.imputer module
+------------------------------
+
+.. automodule:: help.preprocess.imputer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 help.preprocess.loaders module
 ------------------------------
 

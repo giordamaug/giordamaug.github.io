@@ -42,11 +42,8 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
-</ul>
-
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
         </div>
       </div>
     </nav>
@@ -115,7 +112,7 @@
         
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
             <span class="n">ColValues</span> <span class="o">=</span> <span class="n">T</span><span class="p">[:,</span> <span class="n">c</span><span class="p">]</span>
-            <span class="n">ColTh</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">otsuthresholding</span><span class="p">(</span><span class="n">ColValues</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">ColTh</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">otsuthresholding</span><span class="p">(</span><span class="n">ColValues</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">If1</span> <span class="o">=</span> <span class="n">ColValues</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="n">ismiss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ColValues</span><span class="p">)</span>
             
@@ -154,14 +151,14 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;N must be either 1 or 2.&quot;</span><span class="p">)</span>
         
         <span class="n">num_bins</span> <span class="o">=</span> <span class="mi">256</span>
-        <span class="n">p</span><span class="p">,</span> <span class="n">minA</span><span class="p">,</span> <span class="n">maxA</span> <span class="o">=</span> <span class="n">getpdf</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">)</span>
+        <span class="n">p</span><span class="p">,</span> <span class="n">minA</span><span class="p">,</span> <span class="n">maxA</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">getpdf</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">)</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Cannot compute PDF.&quot;</span>
         
         <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_bins</span><span class="p">))</span>
         <span class="n">mu_t</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-        <span class="n">sigma_b_squared</span> <span class="o">=</span> <span class="n">compute_sigma_b_squared</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">mu_t</span><span class="p">)</span>
+        <span class="n">sigma_b_squared</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">compute_sigma_b_squared</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">mu_t</span><span class="p">)</span>
         
         <span class="n">maxval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">sigma_b_squared</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">maxval</span><span class="p">),</span> <span class="s2">&quot;Cannot find a finite maximum for sigma_b_squared.&quot;</span>
@@ -347,10 +344,10 @@
         
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Two-class labelling:&quot;</span><span class="p">)</span> 
         <span class="c1"># Perform quantization</span>
-        <span class="n">Q2</span><span class="p">,</span> <span class="n">Thr</span> <span class="o">=</span> <span class="n">QuantizeByColumns</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">NumberOfClasses</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
+        <span class="n">Q2</span><span class="p">,</span> <span class="n">Thr</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">QuantizeByColumns</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">NumberOfClasses</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
         <span class="n">Q2</span> <span class="o">=</span> <span class="n">Q2</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="c1">#modeQ2 = stats.mode(Q2, axis=1, keepdims=False).mode</span>
-        <span class="n">modeQ2</span> <span class="o">=</span> <span class="n">modemax</span><span class="p">(</span><span class="n">Q2</span><span class="p">)</span>
+        <span class="n">modeQ2</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">Q2</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">modeQ2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         
         <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -366,10 +363,10 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">TNE</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">NE_genes</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
             <span class="n">NumberOfClasses</span> <span class="o">=</span> <span class="mi">2</span>
-            <span class="n">QNE2</span><span class="p">,</span> <span class="n">ThrNE</span> <span class="o">=</span> <span class="n">QuantizeByColumns</span><span class="p">(</span><span class="n">TNE</span><span class="p">,</span> <span class="n">NumberOfClasses</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
+            <span class="n">QNE2</span><span class="p">,</span> <span class="n">ThrNE</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">QuantizeByColumns</span><span class="p">(</span><span class="n">TNE</span><span class="p">,</span> <span class="n">NumberOfClasses</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span>
             <span class="n">QNE2</span> <span class="o">=</span> <span class="n">QNE2</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="c1">#modeQ2NE = stats.mode(QNE2, axis=1, keepdims=False).mode</span>
-            <span class="n">modeQ2NE</span> <span class="o">=</span> <span class="n">modemax</span><span class="p">(</span><span class="n">QNE2</span><span class="p">)</span>
+            <span class="n">modeQ2NE</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">QNE2</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">modeQ2NE</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
             <span class="n">dfout2</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">NE_genes</span><span class="p">)</span>
             <span class="n">dfout2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
@@ -418,20 +415,20 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;performing mode of mode.&#39;</span><span class="p">)</span>
             <span class="n">Q2_tot</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">lines</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
-                <span class="n">_</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="n">three_class</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">)</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="n">three_class</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">)</span>
                 <span class="n">Q2_tot</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Q2</span><span class="p">]</span>
             <span class="c1"># Execute mode on each tissue and sort&#39;em</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">Q2_tot</span><span class="p">)</span>
             <span class="n">Q2Mode_tot</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">Q2_tot</span><span class="p">:</span>
                 <span class="c1">#Q2Mode_tot.append(stats.mode(k, axis=1, keepdims=False).mode)</span>
-                <span class="n">Q2Mode_tot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modemax</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+                <span class="n">Q2Mode_tot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 
             <span class="n">Q2Mode_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">Q2Mode_tot</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
         
             <span class="c1"># Get mode of mode among tissues</span>
             <span class="c1">#modeOfmode = stats.mode(Q2Mode_tot, axis=1, keepdims=False).mode</span>
-            <span class="n">modeOfmode</span> <span class="o">=</span> <span class="n">modemax</span><span class="p">(</span><span class="n">Q2Mode_tot</span><span class="p">)</span>
+            <span class="n">modeOfmode</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">Q2Mode_tot</span><span class="p">)</span>
             <span class="n">dfout</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="p">[])]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
             <span class="n">dfout</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">rowname</span>
             <span class="n">dfout</span><span class="p">[</span><span class="n">colname</span><span class="p">]</span> <span class="o">=</span> <span class="n">modeOfmode</span> <span class="c1">#.ravel()</span>
@@ -441,7 +438,7 @@
         <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Wrong columns partition format.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">dfout</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="n">three_class</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>  <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">)</span>
+            <span class="n">dfout</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">help_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="n">three_class</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>  <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">dfout</span></div>
 </div>
 

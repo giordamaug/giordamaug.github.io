@@ -9,11 +9,11 @@ Welcome to HELP's documentation!
 The HELP framework for essential Genes detection and prediction.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    install
-   notebook
+   help
 
 Indices and tables
 ==================

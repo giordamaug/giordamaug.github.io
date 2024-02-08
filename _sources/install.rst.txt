@@ -1,10 +1,6 @@
 Installation
 ============
 
-.. toctree::
-   :maxdepth: 1
- 
-   install
 
 HELP depends on the following packages:
 numpy,

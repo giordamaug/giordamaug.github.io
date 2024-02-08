@@ -7,8 +7,6 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   index
-   notebook
    help.models
    help.preprocess
    help.utility

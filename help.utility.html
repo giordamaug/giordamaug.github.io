@@ -163,13 +163,12 @@ sets, inset, diffs = EG_tissues_intersect(tissues, common_df, labelname=’label
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">tissues</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tissue1&#39;</span><span class="p">,</span> <span class="s1">&#39;Tissue2&#39;</span><span class="p">]</span>
+<span class="n">sets</span><span class="p">,</span> <span class="n">inset</span><span class="p">,</span> <span class="n">diffs</span> <span class="o">=</span> <span class="n">EG_tissues_intersect_dolabelling</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">tissues</span><span class="p">,</span> <span class="n">subtract_common</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>df = pd.DataFrame(…)
-df_map = pd.DataFrame(…)
-tissues = [‘Tissue1’, ‘Tissue2’]
-sets, inset, diffs = EG_tissues_intersect_dolabelling(df, df_map, tissues, subtract_common=True, three_class=False, display=True, verbose=True)</p>
 </dd></dl>
 
 <dl class="py function">

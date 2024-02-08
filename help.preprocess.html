@@ -125,17 +125,18 @@ Optional, default is “uniform”.</p></li>
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a DataFrame with missing values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Impute missing values using KNN imputation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">imputer_knn</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>from sklearn.impute import KNNImputer
-import numpy as np
-import pandas as pd</p>
-<p># Create a DataFrame with missing values
-data = {‘A’: [1, 2, np.nan, 4], ‘B’: [5, np.nan, 7, 8]}
-df = pd.DataFrame(data)</p>
-<p># Impute missing values using KNN imputation
-result = imputer_knn(df, n_neighbors=3, missing_values=np.nan, weights=”distance”)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -164,19 +165,21 @@ result = imputer_knn(df, n_neighbors=3, missing_values=np.nan, weights=”distan
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a DataFrame with missing values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Create a mapping DataFrame</span>
+<span class="n">data_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ModelID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M1&#39;</span><span class="p">,</span> <span class="s1">&#39;M2&#39;</span><span class="p">,</span> <span class="s1">&#39;M3&#39;</span><span class="p">,</span> <span class="s1">&#39;M4&#39;</span><span class="p">],</span> <span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;L2&#39;</span><span class="p">]}</span>
+<span class="n">df_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_map</span><span class="p">)</span>
+
+<span class="c1"># Impute missing values using KNN imputation grouped by lineages</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">imputer_knn_group</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_map</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">,</span> <span class="n">line_col</span><span class="o">=</span><span class="s1">&#39;ModelID&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>from sklearn.impute import KNNImputer
-import pandas as pd</p>
-<p># Create a DataFrame with missing values
-data = {‘A’: [1, 2, np.nan, 4], ‘B’: [5, np.nan, 7, 8]}
-df = pd.DataFrame(data)</p>
-<p># Create a mapping DataFrame
-data_map = {‘ModelID’: [‘M1’, ‘M2’, ‘M3’, ‘M4’], ‘OncotreeLineage’: [‘L1’, ‘L2’, ‘L1’, ‘L2’]}
-df_map = pd.DataFrame(data_map)</p>
-<p># Impute missing values using KNN imputation grouped by lineages
-result = imputer_knn_group(df, df_map, line_group=’OncotreeLineage’, line_col=’ModelID’, n_neighbors=3, missing_values=np.nan, weights=”distance”, verbose=True)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -202,16 +205,17 @@ Optional, default is “mean”.</p></li>
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a DataFrame with missing values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Impute missing values using mean imputation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">imputer_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>from sklearn.impute import SimpleImputer
-import pandas as pd</p>
-<p># Create a DataFrame with missing values
-data = {‘A’: [1, 2, np.nan, 4], ‘B’: [5, np.nan, 7, 8]}
-df = pd.DataFrame(data)</p>
-<p># Impute missing values using mean imputation
-result = imputer_mean(df, missing_values=np.nan, strategy=’mean’)</p>
 </dd></dl>
 
 </section>
@@ -244,18 +248,18 @@ Default is [{‘fname’: ‘bio+gtex.csv’, ‘fixna’ : True, ‘normalize�
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label_file</span> <span class="o">=</span> <span class="s2">&quot;path/to/label_file.csv&quot;</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;fname&#39;</span><span class="p">:</span> <span class="s1">&#39;path/to/feature_file.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;fixna&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">}]</span>
+<span class="n">colname</span> <span class="o">=</span> <span class="s2">&quot;target_column&quot;</span>
+<span class="n">subsample</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">fold</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">saveflag</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">feature_assemble</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">colname</span><span class="p">,</span> <span class="n">subsample</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">fold</span><span class="p">,</span> <span class="n">saveflag</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>label_file = “path/to/label_file.csv”
-features = [{‘fname’: ‘path/to/feature_file.csv’, ‘fixna’: True, ‘normalize’: ‘std’}]
-colname = “target_column”
-subsample = False
-seed = 1
-fold = 4
-saveflag = False
-verbose = False</p>
-<p>X, Y = feature_assemble(label_file, features, colname, subsample, seed, fold, saveflag, verbose)</p>
 </dd></dl>
 
 </section>

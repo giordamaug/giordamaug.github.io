@@ -123,15 +123,16 @@
 </dd>
 </dl>
 <p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">input_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span>
+<span class="n">num_bins</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">pdf</span><span class="p">,</span> <span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">compute_pdf</span><span class="p">(</span><span class="n">input_array</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>from help.models.labelling import Help
-import numpy as np</p>
-<p># Example usage
-input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
-num_bins = 5</p>
-<p>pdf, min_val, max_val = Help.compute_pdf(input_array, num_bins)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -156,17 +157,17 @@ num_bins = 5</p>
 </dd>
 </dl>
 <p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example usage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+<span class="n">N_value</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">num_bins</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">omega_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="n">mu_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">])</span>
+<span class="n">total_mean</span> <span class="o">=</span> <span class="mf">125.0</span>
+
+<span class="n">sigma_b_squared_values</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">compute_sigma_b_squared</span><span class="p">(</span><span class="n">N_value</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">omega_array</span><span class="p">,</span> <span class="n">mu_array</span><span class="p">,</span> <span class="n">total_mean</span><span class="p">)</span>
 </pre></div>
 </div>
-<p># Example usage
-from help.models.labelling import Help
-N_value = 2
-num_bins = 256
-omega_array = np.array([0.2, 0.8])
-mu_array = np.array([100.0, 150.0])
-total_mean = 125.0</p>
-<p>sigma_b_squared_values = Help.compute_sigma_b_squared(N_value, num_bins, omega_array, mu_array, total_mean)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -193,14 +194,13 @@ total_mean = 125.0</p>
 </dd>
 </dl>
 <p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example usage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">columns_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;feature1&#39;</span><span class="p">,</span> <span class="s1">&#39;feature2&#39;</span><span class="p">,</span> <span class="s1">&#39;feature3&#39;</span><span class="p">]</span>
+<span class="n">output_df</span><span class="p">,</span> <span class="n">quantized_array</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">help_core</span><span class="p">(</span><span class="n">input_df</span><span class="p">,</span> <span class="n">columns_list</span><span class="p">,</span> <span class="n">three_class</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span> <span class="n">rowname</span><span class="o">=</span><span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p># Example usage
-from help.models.labelling import Help
-input_df = pd.DataFrame(…)
-columns_list = [‘feature1’, ‘feature2’, ‘feature3’]
-output_df, quantized_array = Help.help_core(input_df, columns_list, three_class=True, verbose=True, labelnames={0: ‘E’, 1: ‘NE’}, rowname=’gene’, colname=’label’)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -227,13 +227,12 @@ output_df, quantized_array = Help.help_core(input_df, columns_list, three_class=
 </dd>
 </dl>
 <p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example usage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+<span class="n">input_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">labelling</span><span class="p">(</span><span class="n">input_df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[],</span> <span class="n">three_class</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelnames</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;NE&#39;</span><span class="p">},</span> <span class="n">rowname</span><span class="o">=</span><span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p># Example usage
-from help.models.labelling import Help
-input_df = pd.DataFrame(…)
-output_df = Help.labelling(input_df, columns=[], three_class=True, verbose=True, labelnames={0: ‘E’, 1: ‘NE’}, rowname=’gene’, colname=’label’)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -253,19 +252,18 @@ output_df = Help.labelling(input_df, columns=[], three_class=True, verbose=True,
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.ndarray</p>
 </dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
 </dl>
-<p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example usage</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+<span class="n">input_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="n">mode_values</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">modemax</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span>
 </pre></div>
 </div>
-<p># Example usage
-from help.models.labelling import Help
-input_array = np.array([[1, 2, 3, 3],</p>
-<blockquote>
-<div><p>[2, 3, 4, 4],
-[4, 5, 6, 6]])</p>
-</div></blockquote>
-<p>mode_values = Help.modemax(input_array)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -287,15 +285,16 @@ input_array = np.array([[1, 2, 3, 3],</p>
 </dd>
 </dl>
 <p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">input_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">threshold_value</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">Help</span><span class="o">.</span><span class="n">otsu_thresholding</span><span class="p">(</span><span class="n">input_array</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>import numpy as np
-from help.models.labelling import Help</p>
-<p># Example usage
-input_array = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
-num_classes = 2</p>
-<p>threshold_value, metric = Help.otsu_thresholding(input_array, num_classes)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -319,16 +318,17 @@ num_classes = 2</p>
 <dt class="field-even">Example<span class="colon">:</span></dt>
 <dd class="field-even"><p></p></dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">help.models.labelling</span> <span class="kn">import</span> <span class="n">Help</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">input_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]])</span>
+<span class="n">quantization_levels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">verbosity</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">quantized_array</span><span class="p">,</span> <span class="n">threshold_vector</span> <span class="o">=</span> <span class="n">quantize_2d_array</span><span class="p">(</span><span class="n">input_array</span><span class="p">,</span> <span class="n">quantization_levels</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>import numpy as np
-from help.models.labelling import Help</p>
-<p># Example usage
-input_array = np.array([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
-quantization_levels = 3
-verbosity = 1</p>
-<p>quantized_array, threshold_vector = quantize_2d_array(input_array, quantization_levels, verbosity)</p>
 </dd></dl>
 
 </dd></dl>
@@ -362,13 +362,12 @@ verbosity = 1</p>
 </dd>
 </dl>
 <p>:example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example usage</span>
+<span class="n">X_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">Y_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">predict_cv</span><span class="p">(</span><span class="n">X_data</span><span class="p">,</span> <span class="n">Y_data</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">balanced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">saveflag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
-<p># Example usage
-X_data = pd.DataFrame(…)
-Y_data = pd.DataFrame(…)
-result = predict_cv(X_data, Y_data, n_splits=5, balanced=True, saveflag=False, outfile=None, verbose=True, display=True, seed=42)</p>
 </dd></dl>
 
 <dl class="py function">

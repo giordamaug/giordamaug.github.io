@@ -48,8 +48,8 @@
               <p class="caption" role="heading"><span class="caption-text">NOTES:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requiremensts">Requiremensts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pip">Pip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nightly">Nightly</a></li>
 </ul>
 </li>
 </ul>
@@ -88,29 +88,27 @@
              
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>HELP depends on the following packages:
-numpy,
-tqdm,
-typing,
+<section id="requiremensts">
+<h2>Requiremensts<a class="headerlink" href="#requiremensts" title="Link to this heading"></a></h2>
+<p>HELP depends on the following packages:</p>
+<p>numpy,
 pandas,
-supervenn,
+typing,
 matplotlib,
+skimage,
+sklearn,
+tqdm,
+lightgbm,
+tabulate,
+networkx,
+karateclub,
 ipywidgets,
-scipy,
-sklearn</p>
+supervenn.</p>
+</section>
 <section id="pip">
 <h2>Pip<a class="headerlink" href="#pip" title="Link to this heading"></a></h2>
 <p>HELP allows pip-based installation, please use the following
 command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nb">help</span>
-</pre></div>
-</div>
-</section>
-<section id="nightly">
-<h2>Nightly<a class="headerlink" href="#nightly" title="Link to this heading"></a></h2>
-<p>In case you want to experiment with the latest TorchEEG features which
-are not fully released yet, please run the following command to install
-from the main branch on github:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giordamaug/HELP.git
 </pre></div>
 </div>

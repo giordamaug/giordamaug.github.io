@@ -15,8 +15,27 @@ In more details, the workflow implements the following steps
 
    tutorial1/labelling_tissue
 
-EG detection and predition for two tissues 
-==========================================
+Tissue PPI network embedding 
+============================
+
+In this notebook we show how to calculate embedding vectors for gene (nodes) in the PPI network 
+of a tissue. The embedding matrix (gene x embedding vector components) can be used in successive processing,
+such as prediction of gene essentiality base on gene attributes.
+
+The notebook has few cells:
+
+#. load the PPI network cvs file and apply mebdding by the [!Node2Vec](https://karateclub.readthedocs.io/en/latest/_modules/karateclub/node_embedding/neighbourhood/node2vec.html) embedding technique.
+#. display the embedding matrix and save it in a csv file.
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorial1/embedding
+
+
+
+EG prediction for a tissue 
+==========================
 
 In notebook we show how
 

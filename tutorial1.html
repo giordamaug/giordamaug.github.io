@@ -105,7 +105,12 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/labelling_tissue.html#select-some-tissues">Select some tissues</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#eg-detection-and-predition-for-two-tissues">EG detection and predition for two tissues</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#tissue-ppi-network-embedding">Tissue PPI network embedding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/embedding.html">Load the PPI netowkr and apply embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1/embedding.html#save-the-embedding-and-display-it">Save the embedding and display it</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#eg-prediction-for-a-tissue">EG prediction for a tissue</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html">Load the CRISPR data file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#load-the-map-between-cell-lines-and-tissues">Load the map between cell lines and tissues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial1/Workflow_1.html#imputation-of-data">Imputation of data</a></li>
@@ -202,8 +207,25 @@ In more details, the workflow implements the following steps</p>
 </ul>
 </div>
 </section>
-<section id="eg-detection-and-predition-for-two-tissues">
-<h1>EG detection and predition for two tissues<a class="headerlink" href="#eg-detection-and-predition-for-two-tissues" title="Permalink to this heading">¶</a></h1>
+<section id="tissue-ppi-network-embedding">
+<h1>Tissue PPI network embedding<a class="headerlink" href="#tissue-ppi-network-embedding" title="Permalink to this heading">¶</a></h1>
+<p>In this notebook we show how to calculate embedding vectors for gene (nodes) in the PPI network
+of a tissue. The embedding matrix (gene x embedding vector components) can be used in successive processing,
+such as prediction of gene essentiality base on gene attributes.</p>
+<p>The notebook has few cells:</p>
+<ol class="arabic simple">
+<li><p>load the PPI network cvs file and apply mebdding by the [!Node2Vec](<a class="reference external" href="https://karateclub.readthedocs.io/en/latest/_modules/karateclub/node_embedding/neighbourhood/node2vec.html">https://karateclub.readthedocs.io/en/latest/_modules/karateclub/node_embedding/neighbourhood/node2vec.html</a>) embedding technique.</p></li>
+<li><p>display the embedding matrix and save it in a csv file.</p></li>
+</ol>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/embedding.html">Load the PPI netowkr and apply embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1/embedding.html#save-the-embedding-and-display-it">Save the embedding and display it</a></li>
+</ul>
+</div>
+</section>
+<section id="eg-prediction-for-a-tissue">
+<h1>EG prediction for a tissue<a class="headerlink" href="#eg-prediction-for-a-tissue" title="Permalink to this heading">¶</a></h1>
 <p>In notebook we show how</p>
 <p>#. starting from the CRISPR file we apply the HELP labelling algorithm to detect essential genes (EGs) and non-essentials
 genes (NEGs) in two tissues and in all tissues (pan-tissue).

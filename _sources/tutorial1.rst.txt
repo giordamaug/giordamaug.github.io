@@ -15,8 +15,8 @@ In more details, the workflow implements the following steps
 
    tutorial1/labelling_tissue
 
-Tissue PPI network embedding 
-============================
+Tissue's PPI network embedding 
+==============================
 
 In this notebook we show how to calculate embedding vectors for gene (nodes) in the PPI network 
 of a tissue. The embedding matrix (gene x embedding vector components) can be used in successive processing,
@@ -33,6 +33,21 @@ The notebook has few cells:
    tutorial1/embedding
 
 
+Context_Specific EG for tissues 
+===============================
+
+In notebook we show how
+
+#. starting from the CRISPR file we apply the HELP labelling algorithm to detect essential genes (EGs) and non-essentials
+genes (NEGs) in two tissues and in all tissues (pan-tissue).
+#. by subtracting pan-tissue EGs from a tissue EGs list we get the context-specific EGs (csEGs)
+#. by using tissue specific attributes (genomic, functional, PPI structural, etc.) we develop a LighGBM prediction model for EGs. 
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorial1/csegs
+
 
 EG prediction for a tissue 
 ==========================
@@ -47,4 +62,4 @@ genes (NEGs) in two tissues and in all tissues (pan-tissue).
 .. toctree::
    :maxdepth: 1
 
-   tutorial1/Workflow_1
+   tutorial1/prediction

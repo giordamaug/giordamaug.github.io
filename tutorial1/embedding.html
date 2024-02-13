@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Load the CRISPR data file" href="Workflow_1.html" />
+    <link rel="next" title="Set data path" href="csegs.html" />
     <link rel="prev" title="Set data path" href="labelling_tissue.html" /> 
 </head>
 
@@ -99,11 +99,12 @@
 <p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial1.html">EG detection for a tissue</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html#tissue-ppi-network-embedding">Tissue PPI network embedding</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial1.html#tissue-s-ppi-network-embedding">Tissue’s PPI network embedding</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Load the PPI netowkr and apply embedding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#save-the-embedding-and-display-it">Save the embedding and display it</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#context-specific-eg-for-tissues">Context_Specific EG for tissues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial1.html#eg-prediction-for-a-tissue">EG prediction for a tissue</a></li>
 </ul>
 
@@ -208,7 +209,8 @@
 </section>
 <section id="save-the-embedding-and-display-it">
 <h1>Save the embedding and display it<a class="headerlink" href="#save-the-embedding-and-display-it" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/Kidney_EmbN2V_128.csv&#39;</span><span class="p">)</span>
+<span class="n">df_embed</span>
 </pre></div>
 </div>
 <div>
@@ -520,10 +522,7 @@
   </tbody>
 </table>
 <p>19314 rows × 128 columns</p>
-</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_embed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/Kidney_EmbN2V_128.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
+</div></section>
 
 
            </div>
@@ -531,7 +530,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Workflow_1.html" class="btn btn-neutral float-right" title="Load the CRISPR data file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="csegs.html" class="btn btn-neutral float-right" title="Set data path" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="labelling_tissue.html" class="btn btn-neutral float-left" title="Set data path" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

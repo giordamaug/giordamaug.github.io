@@ -43,6 +43,7 @@ Save the embedding and display it
 
 .. code:: ipython3
 
+    df_embed.to_csv('../data/Kidney_EmbN2V_128.csv')
     df_embed
 
 
@@ -360,9 +361,3 @@ Save the embedding and display it
     </table>
     <p>19314 rows × 128 columns</p>
     </div>
-
-
-
-.. code:: ipython3
-
-    df_embed.to_csv('../data/Kidney_EmbN2V_128.csv')

@@ -177,8 +177,25 @@ the intersection of genes, and differences in genes.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.delrows_with_nan_percentage">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">delrows_with_nan_percentage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#delrows_with_nan_percentage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.delrows_with_nan_percentage" title="Link to this definition"></a></dt>
+<dd><p>Filter rows in a DataFrame based on the percentage of NaN values.</p>
+<p>Parameters:
+:param: pd.DataFrame df: The input DataFrame.
+:param: float perc: The percentage of NaN values allowed in each row. Default is 0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new DataFrame with rows filtered based on the specified percentage of NaN values.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="help.utility.selection.filter_cellmap">
-<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">filter_cellmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#filter_cellmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.filter_cellmap" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">filter_cellmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#filter_cellmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.filter_cellmap" title="Link to this definition"></a></dt>
 <dd><p>Filters a cell map DataFrame based on the minimum number of lines per group.</p>
 <p>Parameters:
 :param pd.DataFrame df_map: The input DataFrame containing cell map information.
@@ -197,6 +214,35 @@ the intersection of genes, and differences in genes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filter_cellmap</span><span class="p">(</span><span class="n">cell_map_data</span><span class="p">,</span> <span class="n">minlines</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_group</span><span class="o">=</span><span class="s1">&#39;OncotreeLineage&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="help.utility.selection.filter_crispr_by_model">
+<span class="sig-prename descclassname"><span class="pre">help.utility.selection.</span></span><span class="sig-name descname"><span class="pre">filter_crispr_by_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minlines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_colname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ModelID'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'OncotreeLineage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/utility/selection.html#filter_crispr_by_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.utility.selection.filter_crispr_by_model" title="Link to this definition"></a></dt>
+<dd><p>Filter a CRISPR DataFrame based on a mapping DataFrame and specified conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame df: The CRISPR DataFrame to be filtered.</p>
+</dd>
+<dt class="field-even">Param<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame df_map: The mapping DataFrame containing information about cell lines and models.</p>
+</dd>
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int minlines int: The minimum number of lines required for a tissue in the model. Default is 1.</p>
+</dd>
+<dt class="field-even">Param<span class="colon">:</span></dt>
+<dd class="field-even"><p>str line_colname: The column name in both DataFrames representing the cell line ID. Default is ‘ModelID’.</p>
+</dd>
+<dt class="field-odd">Param<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str line_group: The column name in the mapping DataFrame representing the tissue/lineage group. Default is ‘OncotreeLineage’.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new DataFrame with CRISPR data filtered based on the selected cell lines and conditions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">

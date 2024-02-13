@@ -268,6 +268,32 @@ Default is [{‘fname’: ‘bio+gtex.csv’, ‘fixna’ : True, ‘normalize�
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="help.preprocess.loaders.scale_to_essentials">
+<span class="sig-prename descclassname"><span class="pre">help.preprocess.loaders.</span></span><span class="sig-name descname"><span class="pre">scale_to_essentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ge_fit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ess_genes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noness_genes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/preprocess/loaders.html#scale_to_essentials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.preprocess.loaders.scale_to_essentials" title="Link to this definition"></a></dt>
+<dd><p>Scales gene expression data to essential and non-essential genes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ge_fit</strong> (<em>pd.DataFrame</em>) – DataFrame containing the gene expression data.</p></li>
+<li><p><strong>ess_genes</strong> (<em>list</em>) – List of essential genes for scaling.</p></li>
+<li><p><strong>noness_genes</strong> (<em>list</em>) – List of non-essential genes for scaling.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scaled gene expression data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_data</span> <span class="o">=</span> <span class="n">scale_to_essentials</span><span class="p">(</span><span class="n">gene_expression_data</span><span class="p">,</span> <span class="n">ess_genes_list</span><span class="p">,</span> <span class="n">noness_genes_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="module-help.preprocess">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-help.preprocess" title="Link to this heading"></a></h2>

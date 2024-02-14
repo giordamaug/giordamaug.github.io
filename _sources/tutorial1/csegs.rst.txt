@@ -44,7 +44,7 @@ Load the CRISPR data file
             text-align: right;
         }
     </style>
-    <table border="1" class="dataframe">
+    <table border="1" style="border: 1px solid red;width:300px;display:block">
       <thead>
         <tr style="text-align: right;">
           <th>gene</th>
@@ -61,7 +61,7 @@ Load the CRISPR data file
           <th>ACH-002926</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style='height:50px;display:block;overflow:scroll'>
         <tr>
           <th>A1BG</th>
           <td>-0.122637</td>

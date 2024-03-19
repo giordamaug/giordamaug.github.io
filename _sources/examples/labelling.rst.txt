@@ -1,5 +1,5 @@
-1 Install HELP from GitHub
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Install HELP from GitHub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Skip this cell if you alread have installed HELP.
 
@@ -7,8 +7,8 @@ Skip this cell if you alread have installed HELP.
 
     !pip install git+https://github.com/giordamaug/HELP.git
 
-2 Download the input files
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+2. Download the input files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download from the DepMap portal the gene deletion expression scores
 (``CRISPRGeneEffect.csv``) and the map between cell-lines and tissues
@@ -20,8 +20,8 @@ locally.
     !wget -c https://figshare.com/ndownloader/files/43346616 -O CRISPRGeneEffect.csv
     !wget -c https://figshare.com/ndownloader/files/43746708 -O Model.csv
 
-3 Load the input files
-~~~~~~~~~~~~~~~~~~~~~~
+3. Load the input files
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Load the CRISPR data and show the content.
 

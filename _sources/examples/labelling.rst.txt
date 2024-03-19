@@ -1,11 +1,5 @@
-.. image:: https://colab.research.google.com/assets/colab-badge.svg
-   :target: https://colab.research.google.com/github/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb
-.. image:: https://kaggle.com/static/images/open-in-kaggle.svg
-   :target: https://www.kaggle.com/notebooks/welcome?src=https://github.com/giordamaug/HELP/blob/main/help/notebooks/labelling.ipynb
-
-
-1. Install HELP from GitHub
----------------------------
+1 Install HELP from GitHub
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Skip this cell if you alread have installed HELP.
 
@@ -13,11 +7,12 @@ Skip this cell if you alread have installed HELP.
 
     !pip install git+https://github.com/giordamaug/HELP.git
 
-2. Download the input files
----------------------------
+2 Download the input files
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this cell we download from GitHub repository the label file and the
-attribute files. Skip this step if you already have these input files
+Download from the DepMap portal the gene deletion expression scores
+(``CRISPRGeneEffect.csv``) and the map between cell-lines and tissues
+(``Model.csv``). Skip this step if you already have these input files
 locally.
 
 .. code:: ipython3
@@ -25,8 +20,10 @@ locally.
     !wget -c https://figshare.com/ndownloader/files/43346616 -O CRISPRGeneEffect.csv
     !wget -c https://figshare.com/ndownloader/files/43746708 -O Model.csv
 
-3. Load the input files
------------------------
+3 Load the input files
+~~~~~~~~~~~~~~~~~~~~~~
+
+Load the CRISPR data and show the content.
 
 .. code:: ipython3
 
@@ -46,9 +43,7 @@ locally.
 
 .. raw:: html
 
-    
-      <div id="df-96b856ba-40cd-4f40-bc51-de98c98cb478" class="colab-df-container">
-        <div>
+    <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
@@ -358,274 +353,22 @@ locally.
     </table>
     <p>18443 rows × 1100 columns</p>
     </div>
-        <div class="colab-df-buttons">
-    
-      <div class="colab-df-container">
-        <button class="colab-df-convert" onclick="convertToInteractive('df-96b856ba-40cd-4f40-bc51-de98c98cb478')"
-                title="Convert this dataframe to an interactive table."
-                style="display:none;">
-    
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-        <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-      </svg>
-        </button>
-    
-      <style>
-        .colab-df-container {
-          display:flex;
-          gap: 12px;
-        }
-    
-        .colab-df-convert {
-          background-color: #E8F0FE;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-          display: none;
-          fill: #1967D2;
-          height: 32px;
-          padding: 0 0 0 0;
-          width: 32px;
-        }
-    
-        .colab-df-convert:hover {
-          background-color: #E2EBFA;
-          box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-          fill: #174EA6;
-        }
-    
-        .colab-df-buttons div {
-          margin-bottom: 4px;
-        }
-    
-        [theme=dark] .colab-df-convert {
-          background-color: #3B4455;
-          fill: #D2E3FC;
-        }
-    
-        [theme=dark] .colab-df-convert:hover {
-          background-color: #434B5C;
-          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-          fill: #FFFFFF;
-        }
-      </style>
-    
-        <script>
-          const buttonEl =
-            document.querySelector('#df-96b856ba-40cd-4f40-bc51-de98c98cb478 button.colab-df-convert');
-          buttonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-    
-          async function convertToInteractive(key) {
-            const element = document.querySelector('#df-96b856ba-40cd-4f40-bc51-de98c98cb478');
-            const dataTable =
-              await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                        [key], {});
-            if (!dataTable) return;
-    
-            const docLinkHtml = 'Like what you see? Visit the ' +
-              '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-              + ' to learn more about interactive tables.';
-            element.innerHTML = '';
-            dataTable['output_type'] = 'display_data';
-            await google.colab.output.renderOutput(dataTable, element);
-            const docLink = document.createElement('div');
-            docLink.innerHTML = docLinkHtml;
-            element.appendChild(docLink);
-          }
-        </script>
-      </div>
-    
-    
-    <div id="df-b52dc1c1-fcd9-4c6a-9d88-ee520a73c63f">
-      <button class="colab-df-quickchart" onclick="quickchart('df-b52dc1c1-fcd9-4c6a-9d88-ee520a73c63f')"
-                title="Suggest charts"
-                style="display:none;">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-         width="24px">
-        <g>
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-        </g>
-    </svg>
-      </button>
-    
-    <style>
-      .colab-df-quickchart {
-          --bg-color: #E8F0FE;
-          --fill-color: #1967D2;
-          --hover-bg-color: #E2EBFA;
-          --hover-fill-color: #174EA6;
-          --disabled-fill-color: #AAA;
-          --disabled-bg-color: #DDD;
-      }
-    
-      [theme=dark] .colab-df-quickchart {
-          --bg-color: #3B4455;
-          --fill-color: #D2E3FC;
-          --hover-bg-color: #434B5C;
-          --hover-fill-color: #FFFFFF;
-          --disabled-bg-color: #3B4455;
-          --disabled-fill-color: #666;
-      }
-    
-      .colab-df-quickchart {
-        background-color: var(--bg-color);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: var(--fill-color);
-        height: 32px;
-        padding: 0;
-        width: 32px;
-      }
-    
-      .colab-df-quickchart:hover {
-        background-color: var(--hover-bg-color);
-        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: var(--button-hover-fill-color);
-      }
-    
-      .colab-df-quickchart-complete:disabled,
-      .colab-df-quickchart-complete:disabled:hover {
-        background-color: var(--disabled-bg-color);
-        fill: var(--disabled-fill-color);
-        box-shadow: none;
-      }
-    
-      .colab-df-spinner {
-        border: 2px solid var(--fill-color);
-        border-color: transparent;
-        border-bottom-color: var(--fill-color);
-        animation:
-          spin 1s steps(1) infinite;
-      }
-    
-      @keyframes spin {
-        0% {
-          border-color: transparent;
-          border-bottom-color: var(--fill-color);
-          border-left-color: var(--fill-color);
-        }
-        20% {
-          border-color: transparent;
-          border-left-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-        }
-        30% {
-          border-color: transparent;
-          border-left-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-          border-right-color: var(--fill-color);
-        }
-        40% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-        }
-        60% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-        }
-        80% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-          border-bottom-color: var(--fill-color);
-        }
-        90% {
-          border-color: transparent;
-          border-bottom-color: var(--fill-color);
-        }
-      }
-    </style>
-    
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-b52dc1c1-fcd9-4c6a-9d88-ee520a73c63f button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-        </div>
-      </div>
 
 
 
-
-Then load the mapping information and show the content. 
+Then load the mapping information and show the content.
 
 .. code:: ipython3
 
     df_map = pd.read_csv("Model.csv")
-    print(df_map[['OncotreeLineage']].value_counts())
     df_map
-
-
-.. parsed-literal::
-
-    OncotreeLineage          
-    Lung                         249
-    Lymphoid                     211
-    CNS/Brain                    122
-    Skin                         120
-    Esophagus/Stomach             95
-    Breast                        94
-    Bowel                         89
-    Head and Neck                 84
-    Bone                          77
-    Myeloid                       77
-    Ovary/Fallopian Tube          75
-    Kidney                        73
-    Pancreas                      66
-    Peripheral Nervous System     56
-    Soft Tissue                   55
-    Biliary Tract                 44
-    Uterus                        41
-    Fibroblast                    41
-    Bladder/Urinary Tract         39
-    Normal                        39
-    Pleura                        35
-    Liver                         29
-    Cervix                        25
-    Eye                           21
-    Thyroid                       18
-    Prostate                      15
-    Testis                         7
-    Vulva/Vagina                   5
-    Muscle                         5
-    Ampulla of Vater               4
-    Hair                           2
-    Other                          1
-    Embryonal                      1
-    Adrenal Gland                  1
-    dtype: int64
 
 
 
 
 .. raw:: html
 
-    
-      <div id="df-364386d7-22ea-4946-a637-2f766cb60b07" class="colab-df-container">
-        <div>
+    <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
@@ -683,7 +426,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NIHOVCAR3_OVARY</td>
           <td>HTB-71</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>2201.0</td>
@@ -707,7 +450,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>HL60_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>CCL-240</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>55.0</td>
@@ -731,7 +474,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>CACO2_LARGE_INTESTINE</td>
           <td>HTB-37</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -755,7 +498,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>HEL_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>ACC 11</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>783.0</td>
@@ -779,7 +522,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>HEL9217_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE</td>
           <td>HEL9217</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -827,7 +570,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -851,7 +594,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -875,7 +618,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -899,7 +642,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -923,7 +666,7 @@ Then load the mapping information and show the content.
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
-          <td>None</td>
+          <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
           <td>NaN</td>
@@ -935,217 +678,17 @@ Then load the mapping information and show the content.
     </table>
     <p>1921 rows × 36 columns</p>
     </div>
-        <div class="colab-df-buttons">
-    
-      <div class="colab-df-container">
-        <button class="colab-df-convert" onclick="convertToInteractive('df-364386d7-22ea-4946-a637-2f766cb60b07')"
-                title="Convert this dataframe to an interactive table."
-                style="display:none;">
-    
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-        <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-      </svg>
-        </button>
-    
-      <style>
-        .colab-df-container {
-          display:flex;
-          gap: 12px;
-        }
-    
-        .colab-df-convert {
-          background-color: #E8F0FE;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-          display: none;
-          fill: #1967D2;
-          height: 32px;
-          padding: 0 0 0 0;
-          width: 32px;
-        }
-    
-        .colab-df-convert:hover {
-          background-color: #E2EBFA;
-          box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-          fill: #174EA6;
-        }
-    
-        .colab-df-buttons div {
-          margin-bottom: 4px;
-        }
-    
-        [theme=dark] .colab-df-convert {
-          background-color: #3B4455;
-          fill: #D2E3FC;
-        }
-    
-        [theme=dark] .colab-df-convert:hover {
-          background-color: #434B5C;
-          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-          fill: #FFFFFF;
-        }
-      </style>
-    
-        <script>
-          const buttonEl =
-            document.querySelector('#df-364386d7-22ea-4946-a637-2f766cb60b07 button.colab-df-convert');
-          buttonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-    
-          async function convertToInteractive(key) {
-            const element = document.querySelector('#df-364386d7-22ea-4946-a637-2f766cb60b07');
-            const dataTable =
-              await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                        [key], {});
-            if (!dataTable) return;
-    
-            const docLinkHtml = 'Like what you see? Visit the ' +
-              '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-              + ' to learn more about interactive tables.';
-            element.innerHTML = '';
-            dataTable['output_type'] = 'display_data';
-            await google.colab.output.renderOutput(dataTable, element);
-            const docLink = document.createElement('div');
-            docLink.innerHTML = docLinkHtml;
-            element.appendChild(docLink);
-          }
-        </script>
-      </div>
-    
-    
-    <div id="df-7a24c151-30c4-496f-82e2-690109ff81f9">
-      <button class="colab-df-quickchart" onclick="quickchart('df-7a24c151-30c4-496f-82e2-690109ff81f9')"
-                title="Suggest charts"
-                style="display:none;">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-         width="24px">
-        <g>
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-        </g>
-    </svg>
-      </button>
-    
-    <style>
-      .colab-df-quickchart {
-          --bg-color: #E8F0FE;
-          --fill-color: #1967D2;
-          --hover-bg-color: #E2EBFA;
-          --hover-fill-color: #174EA6;
-          --disabled-fill-color: #AAA;
-          --disabled-bg-color: #DDD;
-      }
-    
-      [theme=dark] .colab-df-quickchart {
-          --bg-color: #3B4455;
-          --fill-color: #D2E3FC;
-          --hover-bg-color: #434B5C;
-          --hover-fill-color: #FFFFFF;
-          --disabled-bg-color: #3B4455;
-          --disabled-fill-color: #666;
-      }
-    
-      .colab-df-quickchart {
-        background-color: var(--bg-color);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: var(--fill-color);
-        height: 32px;
-        padding: 0;
-        width: 32px;
-      }
-    
-      .colab-df-quickchart:hover {
-        background-color: var(--hover-bg-color);
-        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: var(--button-hover-fill-color);
-      }
-    
-      .colab-df-quickchart-complete:disabled,
-      .colab-df-quickchart-complete:disabled:hover {
-        background-color: var(--disabled-bg-color);
-        fill: var(--disabled-fill-color);
-        box-shadow: none;
-      }
-    
-      .colab-df-spinner {
-        border: 2px solid var(--fill-color);
-        border-color: transparent;
-        border-bottom-color: var(--fill-color);
-        animation:
-          spin 1s steps(1) infinite;
-      }
-    
-      @keyframes spin {
-        0% {
-          border-color: transparent;
-          border-bottom-color: var(--fill-color);
-          border-left-color: var(--fill-color);
-        }
-        20% {
-          border-color: transparent;
-          border-left-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-        }
-        30% {
-          border-color: transparent;
-          border-left-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-          border-right-color: var(--fill-color);
-        }
-        40% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-        }
-        60% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-        }
-        80% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-          border-bottom-color: var(--fill-color);
-        }
-        90% {
-          border-color: transparent;
-          border-bottom-color: var(--fill-color);
-        }
-      }
-    </style>
-    
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-7a24c151-30c4-496f-82e2-690109ff81f9 button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-        </div>
-      </div>
 
 
 
+Example 1.1 two-class labeling of EGs based on tissue information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Filter the information to be exploited
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Filter the genes mapped to tissues (``OncotreeLineage`` column in the
+mapping file) having less than ``minlines`` cell-lines.
 
 .. code:: ipython3
 
@@ -1158,9 +701,7 @@ Then load the mapping information and show the content.
 
 .. raw:: html
 
-    
-      <div id="df-68fb011e-3c77-44db-96de-2aa825812a16" class="colab-df-container">
-        <div>
+    <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
@@ -1470,228 +1011,59 @@ Then load the mapping information and show the content.
     </table>
     <p>18443 rows × 1091 columns</p>
     </div>
-        <div class="colab-df-buttons">
-    
-      <div class="colab-df-container">
-        <button class="colab-df-convert" onclick="convertToInteractive('df-68fb011e-3c77-44db-96de-2aa825812a16')"
-                title="Convert this dataframe to an interactive table."
-                style="display:none;">
-    
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-        <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-      </svg>
-        </button>
-    
-      <style>
-        .colab-df-container {
-          display:flex;
-          gap: 12px;
-        }
-    
-        .colab-df-convert {
-          background-color: #E8F0FE;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-          display: none;
-          fill: #1967D2;
-          height: 32px;
-          padding: 0 0 0 0;
-          width: 32px;
-        }
-    
-        .colab-df-convert:hover {
-          background-color: #E2EBFA;
-          box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-          fill: #174EA6;
-        }
-    
-        .colab-df-buttons div {
-          margin-bottom: 4px;
-        }
-    
-        [theme=dark] .colab-df-convert {
-          background-color: #3B4455;
-          fill: #D2E3FC;
-        }
-    
-        [theme=dark] .colab-df-convert:hover {
-          background-color: #434B5C;
-          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-          filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-          fill: #FFFFFF;
-        }
-      </style>
-    
-        <script>
-          const buttonEl =
-            document.querySelector('#df-68fb011e-3c77-44db-96de-2aa825812a16 button.colab-df-convert');
-          buttonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-    
-          async function convertToInteractive(key) {
-            const element = document.querySelector('#df-68fb011e-3c77-44db-96de-2aa825812a16');
-            const dataTable =
-              await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                        [key], {});
-            if (!dataTable) return;
-    
-            const docLinkHtml = 'Like what you see? Visit the ' +
-              '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-              + ' to learn more about interactive tables.';
-            element.innerHTML = '';
-            dataTable['output_type'] = 'display_data';
-            await google.colab.output.renderOutput(dataTable, element);
-            const docLink = document.createElement('div');
-            docLink.innerHTML = docLinkHtml;
-            element.appendChild(docLink);
-          }
-        </script>
-      </div>
-    
-    
-    <div id="df-e5cfc771-e368-4284-a192-75b546f442e5">
-      <button class="colab-df-quickchart" onclick="quickchart('df-e5cfc771-e368-4284-a192-75b546f442e5')"
-                title="Suggest charts"
-                style="display:none;">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-         width="24px">
-        <g>
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-        </g>
-    </svg>
-      </button>
-    
-    <style>
-      .colab-df-quickchart {
-          --bg-color: #E8F0FE;
-          --fill-color: #1967D2;
-          --hover-bg-color: #E2EBFA;
-          --hover-fill-color: #174EA6;
-          --disabled-fill-color: #AAA;
-          --disabled-bg-color: #DDD;
-      }
-    
-      [theme=dark] .colab-df-quickchart {
-          --bg-color: #3B4455;
-          --fill-color: #D2E3FC;
-          --hover-bg-color: #434B5C;
-          --hover-fill-color: #FFFFFF;
-          --disabled-bg-color: #3B4455;
-          --disabled-fill-color: #666;
-      }
-    
-      .colab-df-quickchart {
-        background-color: var(--bg-color);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: none;
-        fill: var(--fill-color);
-        height: 32px;
-        padding: 0;
-        width: 32px;
-      }
-    
-      .colab-df-quickchart:hover {
-        background-color: var(--hover-bg-color);
-        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-        fill: var(--button-hover-fill-color);
-      }
-    
-      .colab-df-quickchart-complete:disabled,
-      .colab-df-quickchart-complete:disabled:hover {
-        background-color: var(--disabled-bg-color);
-        fill: var(--disabled-fill-color);
-        box-shadow: none;
-      }
-    
-      .colab-df-spinner {
-        border: 2px solid var(--fill-color);
-        border-color: transparent;
-        border-bottom-color: var(--fill-color);
-        animation:
-          spin 1s steps(1) infinite;
-      }
-    
-      @keyframes spin {
-        0% {
-          border-color: transparent;
-          border-bottom-color: var(--fill-color);
-          border-left-color: var(--fill-color);
-        }
-        20% {
-          border-color: transparent;
-          border-left-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-        }
-        30% {
-          border-color: transparent;
-          border-left-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-          border-right-color: var(--fill-color);
-        }
-        40% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-          border-top-color: var(--fill-color);
-        }
-        60% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-        }
-        80% {
-          border-color: transparent;
-          border-right-color: var(--fill-color);
-          border-bottom-color: var(--fill-color);
-        }
-        90% {
-          border-color: transparent;
-          border-bottom-color: var(--fill-color);
-        }
-      }
-    </style>
-    
-      <script>
-        async function quickchart(key) {
-          const quickchartButtonEl =
-            document.querySelector('#' + key + ' button');
-          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-          quickchartButtonEl.classList.add('colab-df-spinner');
-          try {
-            const charts = await google.colab.kernel.invokeFunction(
-                'suggestCharts', [key], {});
-          } catch (error) {
-            console.error('Error during call to suggestCharts:', error);
-          }
-          quickchartButtonEl.classList.remove('colab-df-spinner');
-          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-        }
-        (() => {
-          let quickchartButtonEl =
-            document.querySelector('#df-e5cfc771-e368-4284-a192-75b546f442e5 button');
-          quickchartButtonEl.style.display =
-            google.colab.kernel.accessAllowed ? 'block' : 'none';
-        })();
-      </script>
-    </div>
-        </div>
-      </div>
 
 
 
+Show which are the tissues available from the mapping file:
 
-Select some tissues
--------------------
+.. code:: ipython3
 
-In this section we select only cell-lines of a specific tissue. We check
-that, once CRISPR datafile is reduced to a subset of total cell-lines,
-that there is no row (gene) in the datafile with all NaN as cell values.
-Inthat case we remove those rows (genes) before applying the labelling
-algorithm.
+    print(df_map[['OncotreeLineage']].value_counts())
 
-We start labelling genes for the ``Kidney`` tissue…
+
+.. parsed-literal::
+
+    OncotreeLineage          
+    Lung                         249
+    Lymphoid                     211
+    CNS/Brain                    122
+    Skin                         120
+    Esophagus/Stomach             95
+    Breast                        94
+    Bowel                         89
+    Head and Neck                 84
+    Bone                          77
+    Myeloid                       77
+    Ovary/Fallopian Tube          75
+    Kidney                        73
+    Pancreas                      66
+    Peripheral Nervous System     56
+    Soft Tissue                   55
+    Biliary Tract                 44
+    Uterus                        41
+    Fibroblast                    41
+    Bladder/Urinary Tract         39
+    Normal                        39
+    Pleura                        35
+    Liver                         29
+    Cervix                        25
+    Eye                           21
+    Thyroid                       18
+    Prostate                      15
+    Testis                         7
+    Vulva/Vagina                   5
+    Muscle                         5
+    Ampulla of Vater               4
+    Hair                           2
+    Other                          1
+    Embryonal                      1
+    Adrenal Gland                  1
+    Name: count, dtype: int64
+
+
+Select only cell-lines of a chosen tissue (here ``Kidney``) and remove
+cell-lines having more than a certain percentage of NaN values (here
+95%):
 
 .. code:: ipython3
 
@@ -1700,13 +1072,8 @@ We start labelling genes for the ``Kidney`` tissue…
     from help.models.labelling import labelling
     cell_lines = select_cell_lines(df, df_map, [tissue])
     print(f"Selecting {len(cell_lines)} cell-lines")
-    # remove rows with all nans
-    df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=95)
-    df_label1 = labelling(df_nonan, columns = cell_lines, n_classes=2,
-                          labelnames={0: 'E', 1: 'aE', 2: 'sNE'},
-                          mode='two-by-two', algorithm='otsu')
-    df_label1.to_csv(f"{tissue}_HELP.csv")
-    df_label1.value_counts(normalize=False), f"Nan: {df_label1['label'].isna().sum()}"
+    # remove rows with more than perc NaNs
+    df_nonan = delrows_with_nan_percentage(df, perc=95)
 
 
 .. parsed-literal::
@@ -1715,111 +1082,189 @@ We start labelling genes for the ``Kidney`` tissue…
     Removed 512 rows from 18443 with at least 95% NaN
 
 
-.. parsed-literal::
+- Apply two-class HELP labelling
+''''''''''''''''''''''''''''''''
 
-    100%|██████████| 37/37 [00:01<00:00, 29.77it/s]
-    100%|██████████| 37/37 [00:00<00:00, 207.00it/s]
-
-
-
-
-.. parsed-literal::
-
-    (label
-     sNE      13457
-     aE        3221
-     E         1253
-     dtype: int64,
-     'Nan: 0')
-
-
-
-… then we do it for the ``Lung`` tissue …
+Compute the two-class labeling (``mode='flat-multi'``) using the Otsu
+algorithm (``algorithm='otsu'``) and save the results in a csv file
+(``Kidney_HELP_twoClasses.csv``):
 
 .. code:: ipython3
 
-    tissue = 'Lung'
-    from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
-    from help.models.labelling import labelling
-    cell_lines = select_cell_lines(df, df_map, [tissue])
-    print(f"Selecting {len(cell_lines)} cell-lines")
-    # remove rows with all nans
-    df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=95)
-    df_label2 = labelling(df_nonan, columns = [cell_lines], n_classes=2,
-                          labelnames={2: 'sNE', 1: 'aE', 0:'E'},
-                          mode='two-by-two', algorithm='otsu')
-    df_label2.to_csv(f"{tissue}_HELP.csv")
-    df_label2.value_counts(), f"Nan: {df_label2['label'].isna().sum()}"
+    df_label2 = labelling(df_nonan, columns = cell_lines, n_classes=2,
+                          labelnames={0: 'E', 1: 'NE'},
+                          mode='flat-multi', algorithm='otsu', verbose=True)
+    # save the result
+    df_label2.to_csv(f"{tissue}_HELP_twoClasses.csv")
 
 
 .. parsed-literal::
 
-    Selecting 119 cell-lines
-    Removed 512 rows from 18443 with at least 95% NaN
+    performing flat mode on 2-class labelling (flat-multi).
+    [flat-multi]: 1. multi-class labelling:
 
 
 .. parsed-literal::
 
-    100%|██████████| 119/119 [00:00<00:00, 124.62it/s]
-    100%|██████████| 119/119 [00:01<00:00, 95.06it/s] 
-
-
+    100%|██████████| 37/37 [00:00<00:00, 598.29it/s]
 
 
 .. parsed-literal::
 
-    (label
-     sNE      13847
-     aE        2849
-     E         1235
-     dtype: int64,
-     'Nan: 0')
+    label
+    NE       16678
+    E         1253
+    Name: count, dtype: int64
 
+
+Example 1.2 two-class labeling of EGs based on tissue information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Genes have already been filtered according to tissue information for
+Example 1.1, so we only need to: ##### - Apply three-class HELP
+labelling Compute the three-class labeling (``mode='two-by-two'``) using
+the Otsu algorithm (``algorithm='otsu'``) and save the results in a csv
+file (``'Kidney_HELP_threeClasses.csv'``):
+
+.. code:: ipython3
+
+    df_label3 = labelling(df_nonan, columns = cell_lines, n_classes=2,
+                          labelnames={0: 'E', 1: 'aE', 2: 'sNE'},
+                          mode='two-by-two', algorithm='otsu', verbose=True)
+    # save the result
+    df_label3.to_csv(f"{tissue}_HELP_threeClasses.csv")
+
+
+.. parsed-literal::
+
+    performing flat mode on 3-class labelling (two-by-two).
+    [two-by-two]: 1. Two-class labelling:
+
+
+.. parsed-literal::
+
+    100%|██████████| 37/37 [00:00<00:00, 572.91it/s]
+
+
+.. parsed-literal::
+
+    (17931,)
+    [two-by-two]: 2. Two-class labelling on 1-label rows:
+
+
+.. parsed-literal::
+
+    100%|██████████| 37/37 [00:00<00:00, 737.77it/s]
+
+
+.. parsed-literal::
+
+    (16678,)
+    label
+    sNE      13457
+    aE        3221
+    E         1253
+    Name: count, dtype: int64
 
 
 Example 1.3 two-class labeling of EGs based on disease-related information
---------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the same way we can make gene essentiality labelling based on disease
-related information, by allowing the labelling algorith to focus on
-CRISPR cell-lines related so spcific disease. In order to work on
-disease-cells association, we use the same selection functions as before
-but using a different Model column as selector
-(``OncotreePrimaryDisease``).
+- Filter the information to be exploited
+''''''''''''''''''''''''''''''''''''''''
+
+Show which are the diseases available from the mapping file
+(``OncotreePrimaryDisease`` column):
+
+.. code:: ipython3
+
+    print(df_map[['OncotreePrimaryDisease']].value_counts())
+
+
+.. parsed-literal::
+
+    OncotreePrimaryDisease                                       
+    Non-Small Cell Lung Cancer                                       161
+    Non-Cancerous                                                    131
+    Mature B-Cell Neoplasms                                          113
+    Melanoma                                                         107
+    Diffuse Glioma                                                    94
+                                                                    ... 
+    Hepatocellular Carcinoma plus Intrahepatic Cholangiocarcinoma      1
+    Myelodysplastic Syndromes                                          1
+    Mixed Cervical Carcinoma                                           1
+    Hereditary Spherocytosis                                           1
+    Acute Leukemias of Ambiguous Lineage                               1
+    Name: count, Length: 86, dtype: int64
+
+
+Select only cell-lines mapped (via the ``OncotreePrimaryDisease`` column
+of the mapping file) to a chosen disease (here
+``Acute Myeloid Leukemia``\ ’) and remove cell-lines having more than a
+certain percentage of NaN values (here 95%):
 
 .. code:: ipython3
 
     disease = 'Acute Myeloid Leukemia'
     from help.utility.selection import select_cell_lines, delrows_with_nan_percentage
     from help.models.labelling import labelling
-    cell_lines = select_cell_lines(df, df_map, [disease], line_group='OncotreePrimaryDisease')  # change default from 'OncotreeLineage'
+    cell_lines = select_cell_lines(df, df_map, [disease], line_group='OncotreePrimaryDisease')
+    
     print(f"Selecting {len(cell_lines)} cell-lines")
-    # remove rows with all nans
-    df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=100)
-    df_label = labelling(df_nonan, columns = cell_lines, n_classes=2, mode='flat-multi', algorithm='otsu')
-    df_label.to_csv(f"{disease}_HELP.csv")
-    df_label.value_counts(), f"Nan: {df_label['label'].isna().sum()}"
+    # remove rows with more than perc NaNs
+    df_nonan = delrows_with_nan_percentage(df[cell_lines], perc=95)
 
 
 .. parsed-literal::
 
     Selecting 24 cell-lines
-    Removed 512 rows from 18443 with at least 100% NaN
+    Removed 512 rows from 18443 with at least 95% NaN
+
+
+- Apply two-class HELP labelling
+''''''''''''''''''''''''''''''''
+
+Compute the two-class labeling (mode=‘flat-multi’) using the Otsu
+algorithm (algorithm=‘otsu’), save the results in a csv file (‘Acute
+Myeloid Leukemia_HELP_twoClasses.csv’) and print their summary:
+
+.. code:: ipython3
+
+    df_label2 = labelling(df_nonan, columns = cell_lines, n_classes=2,
+                          labelnames={0: 'E', 1: 'NE'},
+                          mode='flat-multi', algorithm='otsu', verbose=True)
+    # save the result
+    df_label2.to_csv(f"{disease}_HELP_twoClasses.csv")
+    # print the number of NaNs
+    df_label2.value_counts(normalize=False)
 
 
 .. parsed-literal::
 
-    100%|██████████| 24/24 [00:00<00:00, 210.68it/s]
+    performing flat mode on 2-class labelling (flat-multi).
+    [flat-multi]: 1. multi-class labelling:
+
+
+.. parsed-literal::
+
+    100%|██████████| 24/24 [00:00<00:00, 492.87it/s]
+
+
+.. parsed-literal::
+
+    label
+    NE       16609
+    E         1322
+    Name: count, dtype: int64
 
 
 
 
 .. parsed-literal::
 
-    (label
-     NE       16609
-     E         1322
-     dtype: int64,
-     'Nan: 0')
+    label
+    NE       16609
+    E         1322
+    Name: count, dtype: int64
 
 

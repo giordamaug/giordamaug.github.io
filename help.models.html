@@ -151,8 +151,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tutorial1.html">
-                        EG detection for a tissue
+                      <a class="nav-link nav-internal" href="examples/labelling.html">
+                        Install HELP from GitHub
                       </a>
                     </li>
                 
@@ -253,8 +253,8 @@ document.write(`
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tutorial1.html">
-                        EG detection for a tissue
+                      <a class="nav-link nav-internal" href="examples/labelling.html">
+                        Install HELP from GitHub
                       </a>
                     </li>
                 
@@ -561,6 +561,11 @@ then a binary quantization is applied only on 1-label rows (the mode on these ro
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="help.models.prediction.predict_cv_sv">
+<span class="sig-prename descclassname"><span class="pre">help.models.prediction.</span></span><span class="sig-name descname"><span class="pre">predict_cv_sv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_voters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balanced</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/models/prediction.html#predict_cv_sv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.prediction.predict_cv_sv" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="help.models.prediction.set_seed">
 <span class="sig-prename descclassname"><span class="pre">help.models.prediction.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/help/models/prediction.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#help.models.prediction.set_seed" title="Link to this definition">#</a></dt>
 <dd><p>Set random and numpy random seed for reproducibility</p>
@@ -635,6 +640,7 @@ then a binary quantization is applied only on 1-label rows (the mode on these ro
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-help.models.prediction">help.models.prediction module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help.models.prediction.predict_cv"><code class="docutils literal notranslate"><span class="pre">predict_cv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help.models.prediction.predict_cv_sv"><code class="docutils literal notranslate"><span class="pre">predict_cv_sv()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help.models.prediction.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
 </ul>
 </li>

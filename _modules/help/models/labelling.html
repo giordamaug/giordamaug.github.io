@@ -54,6 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">EXAMPLES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Example 1: Identification of EGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html#example-2-identification-of-tissue-specific-egs">Example 2: Identification of tissue-specific EGs</a></li>
 </ul>
 
         </div>
@@ -342,7 +343,7 @@
         <span class="k">for</span> <span class="n">lines</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
             <span class="c1"># check if there are rows with all Nans</span>
             <span class="n">nanrows</span> <span class="o">=</span> <span class="n">rows_with_all_nan</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lines</span><span class="p">])</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nanrows</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nanrows</span><span class="p">)</span> <span class="ow">and</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;There are rows with all NaNs, please remove them using the function &#39;rows_with_all_nan()&#39; and re-apply the labelling. Otherwise you will have NaN labels in your output.&quot;</span><span class="p">)</span>
             <span class="n">labels</span> <span class="o">=</span> <span class="n">labelling_core</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">lines</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>  
                                   <span class="n">labelnames</span><span class="o">=</span><span class="n">labelnames</span><span class="p">,</span> <span class="n">rowname</span><span class="o">=</span><span class="n">rowname</span><span class="p">,</span> <span class="n">colname</span><span class="o">=</span><span class="n">colname</span><span class="p">,</span> 
